@@ -1,6 +1,5 @@
-import dotenv from 'dotenv';
-import ConectionDB from './src/config/ConectionDB';
+import Servidor from './src/config/Servidor';
 
-dotenv.config({ path: 'variables.env' });
+const miServidor = new Servidor();
 
-ConectionDB();
+miServidor.iniciarServidor();
