@@ -1,7 +1,9 @@
 class PerfilEntidad {
     public nombrePerfil: string;
-    constructor(nomp: string) {
+    public estadoPerfil :number
+    constructor(nomp: string, estado:number) {
         this.nombrePerfil= nomp
+        this.estadoPerfil=estado
     }
 }
 

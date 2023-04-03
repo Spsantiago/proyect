@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import ConectionDB from './ConectionDB';
 import apiPerfilRuta from '../route/PerfilRoute'
+import apiUsuarioRuta from '../route/UsuarioRoute'
 
 class Servidor {
     public app: express.Application;
@@ -31,6 +32,8 @@ class Servidor {
 
     public iniciarRutas() {
         this.app.use('/api/perfil',apiPerfilRuta)
+        this.app.use('/api/usuario',apiUsuarioRuta)
+
     }
 
     public iniciarServidor() {
