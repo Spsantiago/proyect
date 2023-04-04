@@ -1,15 +1,15 @@
+import React from 'react';
 import './App.css';
-import { Header } from './app/components/Header';
-import { BrowserRouter as Rut } from 'react-router-dom';
-import { Rout } from './app/utils/routes/Rout';
+import { BrowserRouter as Browser } from 'react-router-dom';
+import { Principal } from './app/views/public/Principal';
 
 function App() {
     return (
-        <div className="container-fluid">
-                <Rut>
-                    <Header />
-                    <Rout/>
-                </Rut>
+        <div className="App">
+            <Browser>
+                <Principal />
+        
+            </Browser>
         </div>
     );
 }

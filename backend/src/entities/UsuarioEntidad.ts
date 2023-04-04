@@ -4,7 +4,7 @@ class UsuarioEntidad {
     public nombreUsuario: string;
     public estadoUsuario: number;
     public correoUsuario: string;
-    public password: string;
+    public passwordUsuario: string;
     public fechaCreacion: Date;
     public codPerfil: PerfilEntidad;
 
@@ -19,7 +19,7 @@ class UsuarioEntidad {
         this.nombreUsuario = nomp;
         this.estadoUsuario = estado;
         this.correoUsuario = correo;
-        this.password = password;
+        this.passwordUsuario = password;
         this.fechaCreacion = fecha;
         this.codPerfil = codP;
     }

@@ -1,12 +1,11 @@
 {
-    "folders": [
-        {
-            "path": "."
-        }
-    ],
-    "settings": {
-        "workbench.colorTheme": "Solarized Dark",
-        "restoreTerminals.terminals": [
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Tomorrow Night Blue","restoreTerminals.terminals": [
             {
                 "splitTerminals": [
                     {
@@ -31,5 +30,5 @@
                 ]
             }
         ]
-    }
+	}
 }

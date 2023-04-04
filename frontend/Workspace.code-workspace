@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "workbench.colorTheme": "Default High Contrast",
+        "workbench.editor.decorations.colors": false,
+        "liveServer.settings.port": 5501
+    }
+}
