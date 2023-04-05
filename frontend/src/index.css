@@ -84,7 +84,7 @@ section {
   display: block;
   width: 60px;
   height: 2px;
-  background: var(--color-primary);
+  background: #000;
   left: 0;
   right: 0;
   bottom: 0;
@@ -129,7 +129,7 @@ section {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #000;
 }
 
 .breadcrumbs ol a {
@@ -245,7 +245,7 @@ section {
 }
 
 .header.sticked {
-  background: rgba(27, 47, 69, 0.9);
+  background: #000;
   padding: 12px 0;
 }
 
@@ -333,7 +333,7 @@ section {
     padding: 10px 20px;
     font-size: 15px;
     text-transform: none;
-    color: var(--color-secondary);
+    color: #000;
   }
 
   .navbar .dropdown ul a i {
@@ -493,13 +493,8 @@ section {
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  width: 100%;
   min-height: 100vh;
-  background: url("../src/assets/img/hero-bg.jpg") top center;
-  background-size: cover;
-  position: relative;
-  padding: 120px 0;
-  z-index: 3;
+  background: url("../src/assets/img/logo-original.png") ;  
 }
 
 @media (min-width: 1034px) {
@@ -507,7 +502,7 @@ section {
     position: absolute;
     content: "";
     width: 40%;
-    background: var(--color-secondary);
+    background: #00000070;
     top: 0;
     bottom: 0;
   }
@@ -516,13 +511,13 @@ section {
 .hero:before {
   position: absolute;
   content: "";
-  background: rgba(27, 47, 69, 0.6);
+  background: rgba(0, 0, 0, 0.733);
   inset: 0;
 }
 
 @media (max-width: 1034px) {
   .hero:before {
-    background: rgba(27, 47, 69, 0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -2067,12 +2062,12 @@ section {
   margin-bottom: 25px;
 }
 
-.footer .footer-content .footer-info .logo img {
+.footer .footer-content .footer-info  img {
   max-height: 40px;
   margin-right: 6px;
 }
 
-.footer .footer-content .footer-info .logo span {
+.footer .footer-content .footer-info  span {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -2175,4 +2170,12 @@ section {
   text-align: center;
   font-size: 13px;
   color: var(--color-secondary);
+}
+.Error404{
+  background-color: #00000070;
+}
+.logo{
+  height: 70px;
+  padding: 0 0 0;
+  margin: 0;
 }

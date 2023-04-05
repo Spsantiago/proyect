@@ -1,16 +1,25 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Browser } from 'react-router-dom';
-import { Principal } from './app/views/public/Principal';
+import {Suspense} from 'react'
+import { Ruteo } from './app/utils/routes/Ruteo';
+import { Header } from './app/container/Header';
+
+const Loading =(
+    <div className="spinner-grow text-center" style={{width: "3rem" ,height: "3rem"}} role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+)
 
 function App() {
     return (
-        <div className="App">
+       
             <Browser>
-                <Principal />
-        
+            <Suspense fallback={Loading}>
+                <Ruteo/>
+            </Suspense>
             </Browser>
-        </div>
+      
     );
 }
 

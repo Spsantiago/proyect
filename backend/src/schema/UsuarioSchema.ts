@@ -19,7 +19,7 @@ const UsuarioSchema = new Schema<UsuarioEntidad>(
             required: true,
             lowercase: true,
         },
-        password: {
+        passwordUsuario: {
             type: String,
             required: true,
         },

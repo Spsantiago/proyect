@@ -23,7 +23,8 @@ class UsuarioDao {
             res.status(400).json({ respuesta: 'El Correo ya existe...' });
         } else {
             //cifrado de la contraseña
-            parametros.password = cifrado.hashSync(parametros.password, 10);
+            
+            parametros.passwordUsuario = cifrado.hashSync(parametros.passwordUsuario, 10);
             //se crea el usuario si no existe
             const objUsuario = new UsuarioSechema(parametros);
             objUsuario
@@ -73,6 +74,7 @@ class UsuarioDao {
         } else {
             res.status(200).json({ respuesta: 'el Usuario no existe' });
         }
+
     }
 
     protected static async actualizarUsuario(
