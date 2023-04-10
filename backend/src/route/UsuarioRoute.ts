@@ -11,8 +11,13 @@ class UsuarioRouter {
         this.configRouter();
     }
 
-    public configRouter() {
-        this.rutaApi.get('/listado', usuarioController.consulta);
+    public configRouter():void {
+        this.rutaApi.get('/todos', usuarioController.consulta);
+        this.rutaApi.get('/todos/:codPerfil ', usuarioController.consultaPerfil);
+        this.rutaApi.get('/contxperfil/:codPerfil', usuarioController.cantidadEnPerfil);
+
+
+        this.rutaApi.post('/iniciar', usuarioController.iniciar);
         this.rutaApi.post('/crear', usuarioController.crear);
         this.rutaApi.delete('/eliminar/:codigo', usuarioController.eliminar);
         this.rutaApi.put('/actualizar/:codigo', usuarioController.actualizar);

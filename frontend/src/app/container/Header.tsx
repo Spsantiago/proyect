@@ -1,70 +1,32 @@
-import { Link } from 'react-router-dom';
+import { MouseEvent, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import { ContextoUsuario } from '../security/ContextoUsuario';
+import { OcultarMenu } from '../utils/function/OcultarMenu';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/img/logo.jpg';
 
 export const Header = () => {
+    const navegacion = useNavigate();
+    const miUsuario = useContext(ContextoUsuario);
+    const correoUsuario = miUsuario?.autenticado.correo;
+    const cerrarSesion = (event: MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        localStorage.removeItem('token');
+        navegacion('/inicioSesion');
+    };
+
     return (
-        <div>
-            <header
-                id="header"
-                className="header d-flex align-items-center fixed-top"
-            >
-                <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
-                    <Link
-                        to="index.html"
-                        className="logo d-flex align-items-center"
-                    >
-                        {/*<!-- Uncomment the line below if you also wish to use an image logo -->*/}
 
-                        <h1 className="d-flex align-items-center">
-                            ROGER
-                            <br />
-                            SHOP
-                        </h1>
-                    </Link>
-
-                    <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-                    <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-                    <nav id="navbar" className="navbar">
-                        <ul>
-                            <li>
-                                <Link to="/" className="active">
-                                    Home
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link to="/">Portfolio</Link>
-                            </li>
-
-                            <li>
-                                <Link to="/productos">
-                                Productos
-                                </Link>
-                            </li>
-                            
-
-                            <li>
-                                <Link to="/inicioSesion" className="btn-get-started">
-                               
-                                   Iniciar Sesion
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/Registro"
-                                    className="glightbox btn-watch-video d-flex align-items-center"
-                                >
-                                    <span>Registrarse</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    {/*<-- .navbar -->*/}
-                </div>
-            </header>
-        </div>
-    );
+        <header id="header" className="header fixed-top d-flex align-items-center">
+        
+        <div className="d-flex align-items-center justify-content-between">
+        
+        <a href="index.html" className="logo d-flex align-items-center"> <img src="assets/img/logo.png" alt="" />
+        
+        <span className="d-none d-lg-block">MisiónTIC 2022</span>
+        
+        </a>
 };
 
-<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/main.js"></script>;

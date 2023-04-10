@@ -11,8 +11,9 @@ class PerfilRouter {
         this.configRouter();
     }
 
-    public configRouter() {
-        this.rutaApi.get('/listado', perfilController.consulta);
+    public configRouter():void {
+        this.rutaApi.get('/todos', perfilController.consulta);
+        this.rutaApi.get('/uno/:codigo', perfilController.consultarUno);
         this.rutaApi.post('/crear', perfilController.crear);
         this.rutaApi.delete('/eliminar/:codigo', perfilController.eliminar);
         this.rutaApi.put('/actualizar/:codigo', perfilController.actualizar);

@@ -2,6 +2,21 @@ import { Request, Response } from 'express';
 import UsuarioDao from '../dao/UsuarioDao';
 
 class UsuarioController extends UsuarioDao {
+    //controlador cantidad en Perfil
+    public cantidadEnPerfil(req:Request, res: Response):void{
+        UsuarioController.cantidadUsuarioEnPerfil(req.params.codPerfil,res)
+    }
+
+    //controlador de todos los perfiles 
+    public consultaPerfil(req:Request, res: Response):void{
+        UsuarioController.obtenerUsuariosPerfil(req.params.codPerfil,res)
+    }
+
+    //controlador de Inicio Sesion
+    public iniciar(req:Request, res: Response):void{
+        UsuarioController.iniciarSesion(req.body,res)
+    }
+
     //controlador de consulta 
     public consulta(req: Request, res: Response) {
         UsuarioController.consultarUsuario(res);

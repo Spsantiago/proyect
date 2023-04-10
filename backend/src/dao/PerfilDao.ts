@@ -1,21 +1,28 @@
 import { Response } from 'express';
 import PerfilSechema from '../schema/PerfilSchema';
+import UsuarioSchema from '../schema/UsuarioSchema';
 
 class PerfilDao {
     // sacar los perfiles de la base y pasarselos al cliente
-    protected static async consultarPerfil(res: Response): Promise<any> {
+    protected static async consultarPerfiles(res: Response): Promise<any> {
         //se hace la consulta
         const datos = await PerfilSechema.find().sort({ _id: -1 });
         //entrega la consulta
         res.status(200).json(datos);
     }
 
+    //se crea un perfil
     protected static async crearPerfil(
         parametros: any,
         res: Response
     ): Promise<any> {
+        //limpia todo lo que pueda enviar de mas el frontend
+        delete parametros._id;
+        delete parametros.datosUsuario;
+
         //verificaion si el perfil existe
         const existe = await PerfilSechema.findOne(parametros);
+
         if (existe) {
             res.status(400).json({ respuesta: 'El perfil ya existe...' });
         } else {
@@ -26,7 +33,7 @@ class PerfilDao {
                 .then((miObjeto) => {
                     res.status(400).json({
                         respuesta: 'Perfil Creado',
-                        codigo: miObjeto._id,
+                        id: miObjeto._id,
                     });
                 })
                 .catch(() => {
@@ -37,35 +44,48 @@ class PerfilDao {
         }
     }
 
+    //se elimina un perfil por codigo especifico
     protected static async eliminarPerfil(
         identifiacador: any,
         res: Response
     ): Promise<any> {
-        //verificaion si el perfil existe
-        // const existe = await PerfilSechema.findById(identifiacador);
-        const existe = await PerfilSechema.findById(identifiacador).exec();
-        if (existe) {
-            //se elimina el perfil
-            PerfilSechema.findByIdAndDelete(identifiacador)
-                .then((miObjeto:any) => {
-                    res.status(200).json({
-                        respuesta: 'Perfil eliminado',
-                        eliminado: miObjeto,
-                    });
-                })
-                .catch(() => {
-                    res.status(400).json({
-                        respuesta: 'NO se puede eliminar el perfil',
-                    });
-                });
+        const llave = { _id: identifiacador };
+        //verificaion cuantos usuarios tiene el perfil
+        const cantidad = await UsuarioSchema.countDocuments({
+            codPerfil: llave,
+        });
+        // si el perfil tiene usuarios no se elimina
+        if (cantidad > 0) {
+            res.status(400).json({
+                respuesta: 'Error, El perfil tiene usuarios relacionados',
+            });
         } else {
-            res.status(200).json({ respuesta: 'el perfil no existe' });
+            //si el perfil no tiene usuarios si se puede eliminar
+            const existe = await PerfilSechema.findById(identifiacador).exec();
+            if (existe) {
+                //se pasan respuestas al frontend
+                PerfilSechema.deleteOne(
+                    { _id: identifiacador },
+                    (miError: any, objeto: any) => {
+                        if (miError) {
+                            res.status(400).json({
+                                respuesta: 'Error al einimar el Perfil',
+                            });
+                        } else {
+                            res.status(200).json({ eliminado: objeto });
+                        }
+                    }
+                );
+            } else {
+                res.status(400).json({ respuesta: 'El perfil NO existe' });
+            }
         }
     }
-
+    
+    //se actualiza un perfil por codigo especifico
     protected static async actualizarPerfil(
         identifiacador: any,
-        parametro:any,
+        parametro: any,
 
         res: Response
     ): Promise<any> {
@@ -74,11 +94,15 @@ class PerfilDao {
         const existe = await PerfilSechema.findById(identifiacador).exec();
         if (existe) {
             //se elimina el perfil
-            PerfilSechema.findByIdAndUpdate({_id:identifiacador},{$set:parametro})
-                .then((miObjeto:any) => {
+            PerfilSechema.findByIdAndUpdate(
+                { _id: identifiacador },
+                { $set: parametro }
+            )
+                .then((miObjeto: any) => {
                     res.status(200).json({
                         respuesta: 'Perfil actualizado',
-                        antes: miObjeto,despues:parametro
+                        antes: miObjeto,
+                        despues: parametro,
                     });
                 })
                 .catch(() => {
@@ -90,5 +114,24 @@ class PerfilDao {
             res.status(200).json({ respuesta: 'el perfil no existe' });
         }
     }
+
+    //se busca un perofil por codigo especifico
+    protected static async consultarPerfil(
+        identificador: any,
+        res: Response
+    ): Promise<any> {
+        //se hace la consulta
+        const jsonPerfil = { _id: identificador };
+        const existePerfil = await PerfilSechema.findOne(jsonPerfil).exec();
+        //entrega la consulta
+        if (existePerfil) {
+            res.status(200).json(existePerfil);
+        } else {
+            res.status(400).json({
+                respuesta: 'No hay un perfil con ese identifiicador',
+            });
+        }
+    }
 }
 export default PerfilDao;
+//se elimina el perfil

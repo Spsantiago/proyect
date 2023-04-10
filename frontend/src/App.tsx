@@ -15,6 +15,7 @@ function App() {
     return (
        
             <Browser>
+            <Header/>
             <Suspense fallback={Loading}>
                 <Ruteo/>
             </Suspense>

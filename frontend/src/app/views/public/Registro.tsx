@@ -24,7 +24,6 @@ export const Registro = () => {
             fh.preventDefault(); /*no deja que se comporte por defecto */
             fh.stopPropagation(); /*detiene todas las acciones del formulario */
         } else {
-            console.log(objeto)
            const vieneDelBackend =await ServicioPublico.crearUsuario(objeto)
            console.log(vieneDelBackend)
         }
@@ -33,8 +32,8 @@ export const Registro = () => {
     return (
         <div>
             <main>
-                <div className="Error404">
-                    <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div className="colorB">
+                    <section className="min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">

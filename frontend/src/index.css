@@ -223,7 +223,7 @@ section {
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
@@ -238,7 +238,7 @@ section {
   padding: 24px 0;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 800px) {
   .header {
     padding: 12px 0;
   }
@@ -265,7 +265,7 @@ section {
 /*--------------------------------------------------------------
 # Desktop Navigation
 --------------------------------------------------------------*/
-@media (min-width: 1280px) {
+@media (min-width: 801px) {
   .navbar {
     padding: 0;
   }
@@ -366,7 +366,7 @@ section {
   }
 }
 
-@media (min-width: 1280px) and (max-width: 1366px) {
+@media (min-width: 801px) and (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
     left: -90%;
   }
@@ -376,7 +376,7 @@ section {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 801px) {
 
   .mobile-nav-show,
   .mobile-nav-hide {
@@ -387,7 +387,7 @@ section {
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
-@media (max-width: 1279px) {
+@media (max-width: 800px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -2171,7 +2171,7 @@ section {
   font-size: 13px;
   color: var(--color-secondary);
 }
-.Error404{
+.colorB{
   background-color: #00000070;
 }
 .logo{

@@ -12,11 +12,11 @@ class Seguridad {
                 req.body.datosUsuario = infoUsuario;
                 next();
             } catch (error) {
-                res.status(401).json({ respuesta: 'Token invalido' });
+                res.status(401).json({ respuesta: 'Intento de Fraude' });
             }
         } else {
             //respuesta a no tener un Token de seguridad
-            res.status(401).json({ respuesta: 'No tiene Token' });
+            res.status(401).json({ respuesta: 'Petición negada por el sistema de seguridad' });
         }
     }
 }
