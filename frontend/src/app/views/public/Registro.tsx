@@ -1,22 +1,61 @@
-import { Link } from 'react-router-dom';
-import logo from '../../../assets/img/logo.jpg';
-import { useState } from 'react';
-import { useFormulario } from '../../utils/myHooks/useFormulario';
-import CrearUsuario from '../../models/CrearUsuario';
 import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ServicioPublico from '../../services/ServicioPublico';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import CrearUsuario from '../../models/CrearUsuario';
+import logo from '../../../assets/img/logo.jpg';
+import { ContextoUsuario } from '../../security/ContextoUsuario';
+import { useFormulario } from '../../utils/myHooks/useFormulario';
+import jwtDecode from 'jwt-decode';
+import * as cifrado from 'js-sha512';
+import MiSesion from '../../models/MiSesion';
+import { propUsuario } from '../../models/MisInterfases';
+import { act } from '@testing-library/react';
 
 export const Registro = () => {
+    const navigate = useNavigate();
+    const { actualizar } = useContext(ContextoUsuario) as propUsuario;
     /*variable para tomar un tipo de dato  */
     type formularioHtml = React.FormEvent<HTMLFormElement>;
     /* Se crea un hooks useState para saber si esta o no en proceso  */
-    const [enProceso, setenProceso] = useState<boolean>(false);
+    const [enProceso, setEnProceso] = useState<boolean>(false);
     /* se crean las variables para capturar la informaciaon*/
     let { nombreUsuario, correoUsuario, passwordUsuario, dobleEnlace, objeto } =
         useFormulario<CrearUsuario>(new CrearUsuario('', '', ''));
+
+    const LimpiarForm = (formulario: HTMLFormElement) => {
+        formulario.reset();
+
+        objeto.nombreUsuario = '';
+        objeto.correoUsuario = '';
+        objeto.passwordUsuario = '';
+
+        formulario.nombreUsuario.value = '';
+        formulario.correoUsuario.value = '';
+        formulario.passwordUsuario.value = '';
+
+        formulario.classList.remove('was-validated');
+    };
+
+    const MensajeError = () => {
+        toast('🦄 No se puede crear el Usuario!', {
+            position: 'top-right',
+            autoClose: 6000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+        });
+    };
+
     const verificarFormulario = async (fh: formularioHtml) => {
         fh.preventDefault();
-        setenProceso(true);
+        setEnProceso(true);
         const formularioActual = fh.currentTarget;
 
         formularioActual.classList.add('was-validated');
@@ -24,8 +63,24 @@ export const Registro = () => {
             fh.preventDefault(); /*no deja que se comporte por defecto */
             fh.stopPropagation(); /*detiene todas las acciones del formulario */
         } else {
-           const vieneDelBackend =await ServicioPublico.crearUsuario(objeto)
-           console.log(vieneDelBackend)
+            const claveCifrada = cifrado.sha512(objeto.passwordUsuario);
+            objeto.passwordUsuario = claveCifrada;
+            const resultado = await ServicioPublico.crearUsuario(objeto);   
+            if (resultado.token) {
+                const objJWTRecibido: any = jwtDecode(resultado.token);
+                const usuarioCargado = new MiSesion(
+                    objJWTRecibido.codUsuario,
+                    objJWTRecibido.correo,
+                    objJWTRecibido.perfil
+                );
+                actualizar(usuarioCargado);
+                localStorage.setItem('token', resultado.token);
+                navigate('/dashboard');
+                setEnProceso(false);
+            } else {
+                LimpiarForm(formularioActual);
+                MensajeError();
+            }
         }
     };
 
@@ -40,7 +95,7 @@ export const Registro = () => {
                                     <div className="d-flex">
                                         <Link to="/">
                                             <img
-                                                className="logo"
+                                                className="logoimg"
                                                 src={logo}
                                                 alt=""
                                             />
@@ -138,21 +193,24 @@ export const Registro = () => {
                                                 <div className="col-12">
                                                     <Form.Group controlId="REpasswordU">
                                                         <Form.Label>
-                                                            Confirme su Contraseña
+                                                            Confirme su
+                                                            Contraseña
                                                         </Form.Label>
                                                         <Form.Control
                                                             required
                                                             type="password"
-                                                         
                                                             className="form-control"
-                                                            pattern={passwordUsuario}
+                                                            pattern={
+                                                                passwordUsuario
+                                                            }
                                                         />
                                                         <Form.Control.Feedback type="invalid">
-                                                            Las contraseñas  no coinciden
+                                                            Las contraseñas no
+                                                            coinciden
                                                         </Form.Control.Feedback>
                                                     </Form.Group>
                                                 </div>
-                                              
+
                                                 <div className="col-12">
                                                     <button
                                                         className="btn btn-primary w-100"
@@ -177,7 +235,8 @@ export const Registro = () => {
                         </div>
                     </section>
                 </div>
-            </main>{' '}
+            </main>
+            <ToastContainer />
         </div>
     );
 };

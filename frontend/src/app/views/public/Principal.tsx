@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Header } from '../../container/Header';
+import { MenuSuperior } from '../../container/MenuSuperior';
+
 
 export const Principal = () => {
     return (
         <div>
-            <Header/>
+        <MenuSuperior/>
             <section id="hero" className="hero d-flex align-items-center">
                 <div className="container">
                     <div className="row">

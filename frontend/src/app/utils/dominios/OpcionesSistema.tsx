@@ -15,9 +15,9 @@ const opcionesAdmin=[
 const opcionesInvitado=[
     {nombre:'Acerca de',icono:'bi bi-grid',ruta:'/dashboard/about',hijos:[]},
     {nombre:'Compras ', icono:'bi bi-clipboard-data',ruta:'',hijos:[
-        {nombre:'Pendientes', icono:'bi bi-circle',ruta:'dashboard'},
-        {nombre:'Productos',icono:'bi bi-circle',ruta:'/dashboard/admouse' },
-        {nombre:'Antiguas',icono:'bi bi-circle',ruta:'/dashboard/admouse' }
+        {nombre:'Pendientes', icono:'bi bi-circle',ruta:'dashboard/admuse'},
+        {nombre:'Productos',icono:'bi bi-circle',ruta:'/dashboard/admuse' },
+        {nombre:'Antiguas',icono:'bi bi-circle',ruta:'/dashboard/admuse' }
 
     ]}
 ]

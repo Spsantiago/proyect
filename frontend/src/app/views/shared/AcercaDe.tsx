@@ -23,7 +23,7 @@ export const AcercaDe = () => {
                 <div className="card-group">
                     {' '}
                     <div className="card">
-                        <img src={card} className="" alt="..." />{' '}
+                        <img src={card} className="logo" alt="..." />{' '}
                         <div className="card-body">
                             <h5 className="card-title">Chayanne emilio</h5>
 
@@ -37,7 +37,7 @@ export const AcercaDe = () => {
                 </div>
 
                 <div className="card">
-                    <img src={card} className="" alt="..." />
+                    <img src={card} className="logo" alt="..." />
 
                     <div className="card-body">
                         <h5 className="card-title">Sonia Marga Blade</h5>{' '}
@@ -50,7 +50,7 @@ export const AcercaDe = () => {
                 </div>
 
                 <div className="card">
-                    <img src={card} className="card-ing-top" alt="..." />{' '}
+                    <img src={card} className="card-ing-top logo" alt="..." />{' '}
                     <div className="card-body">
                         <h5 className="card-title">Yo no fui iba pasando</h5>{' '}
                         <p className="card-text">Developer</p>
@@ -60,7 +60,7 @@ export const AcercaDe = () => {
                         </p>
                     </div>
                     <div className="card">
-                        <img src={card} className="card-img-top" alt="..." />
+                        <img src={card} className="card-img-top logo" alt="..." />
                         <div className="card-body">
                             {' '}
                             <h5 className="card-title">
@@ -75,7 +75,7 @@ export const AcercaDe = () => {
                         </div>{' '}
                     </div>
                     <div className="card">
-                        <img src={card} className="card-img-top" alt="..." />{' '}
+                        <img src={card} className="card-img-top logo" alt="..." />{' '}
                         <div className="card-body">
                             <h5 className="card-title">Developer Fullstack</h5>
                             <p className="card-text">Developer</p>{' '}

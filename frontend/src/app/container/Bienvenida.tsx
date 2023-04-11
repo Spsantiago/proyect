@@ -1,6 +1,6 @@
 export const Bienvenida = () => {
     return (
-        <main id="main" className="main">
+        <main id="main" className="colorB min-vh-100">
             <div className="col-lg-11 mx-auto p-4 py-md-5">
                 {' '}
                 <header className="d-flex align-items-center pb-3 mb-5 border-bottom">

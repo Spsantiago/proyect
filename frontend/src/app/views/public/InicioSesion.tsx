@@ -16,7 +16,7 @@ export const InicioSesion = () => {
                                         <img
                                             src={logo}
                                             alt=""
-                                            className="logo"
+                                            className="logoimg"
                                         />
                                     </Link>
                                 </div>

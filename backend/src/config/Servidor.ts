@@ -34,8 +34,8 @@ class Servidor {
     }
 
     public iniciarRutas() {
-        this.app.use('/api/perfil',seguridad.analizarToken,apiPerfilRuta);
-        this.app.use('/api/usuario', apiUsuarioRuta);
+        this.app.use('/api/public/perfil',seguridad.analizarToken,apiPerfilRuta);
+        this.app.use('/api/public/usuario', apiUsuarioRuta);
     }
 
     public iniciarServidor() {

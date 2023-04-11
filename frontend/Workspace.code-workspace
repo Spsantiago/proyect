@@ -6,6 +6,24 @@
     ],
     "settings": {
         "workbench.colorTheme": "Default High Contrast",
-
+        "restoreTerminals.terminals": [
+            {
+                "splitTerminals": [
+                    {
+                        "name": "start",
+                        "commands": ["cls"],
+                        "color": "red",
+                        "icon": "repo"
+                    }
+                ],
+            },{
+                "splitTerminals": [
+                    {
+                        "name": "cmd",
+                        "commands": ["cls"]
+                    }
+                ]
+            }
+        ]
     }
 }
