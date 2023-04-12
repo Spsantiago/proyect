@@ -5,7 +5,6 @@ import logo from '../../../assets/img/logo.jpg';
 export const InicioSesion = () => {
     return (
         <div>
-
             <div className="colorB">
                 <section className=" min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                     <div className="container">
@@ -16,7 +15,7 @@ export const InicioSesion = () => {
                                         <img
                                             src={logo}
                                             alt=""
-                                            className="logoimg"
+                                            className="logo d-flex align-items-center"
                                         />
                                     </Link>
                                 </div>

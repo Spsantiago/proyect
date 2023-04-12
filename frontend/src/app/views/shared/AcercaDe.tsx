@@ -1,8 +1,8 @@
-import card from '../../../assets/img/cards-1.jpg';
+import card from '../../../assets/img/imagen-removebg-preview.png';
 
 export const AcercaDe = () => {
     return (
-        <main id="main" className="main">
+        <main id="main" className="main colorB">
             <div className="pagetitle">
                 <h1>Acerca de ...</h1>
                 <nav>
@@ -13,78 +13,43 @@ export const AcercaDe = () => {
                         </li>
 
                         <li className="breadcrumb-item active">
-                            Listado de tripulantes
+                            Desarrolladores
                         </li>
                     </ol>
                 </nav>{' '}
             </div>
 
-            <div className="mt-4">
-                <div className="card-group">
-                    {' '}
-                    <div className="card">
-                        <img src={card} className="logo" alt="..." />{' '}
+            <div className="mt-4 row justify-content-around">
+                    <div className="card col-md">
+                        <img src={card} className='card-img-top logo' alt="..." />{' '}
                         <div className="card-body">
-                            <h5 className="card-title">Chayanne emilio</h5>
+                            <h5 className="card-title">Roger Bernal</h5>
 
-                            <p className="card-text">Developer</p>
+                            <p className="card-text">Fundador</p>
 
-                            <p className="card-text">
-                                <small className="text-muted">...</small>
-                            </p>
-                        </div>{' '}
-                    </div>
-                </div>
-
-                <div className="card">
-                    <img src={card} className="logo" alt="..." />
-
-                    <div className="card-body">
-                        <h5 className="card-title">Sonia Marga Blade</h5>{' '}
-                        <p className="card-text">Developer</p>
-                        <p className="card-text">
-                            {' '}
-                            <small className="text-muted">...</small>
-                        </p>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <img src={card} className="card-ing-top logo" alt="..." />{' '}
-                    <div className="card-body">
-                        <h5 className="card-title">Yo no fui iba pasando</h5>{' '}
-                        <p className="card-text">Developer</p>
-                        <p className="card-text">
-                            {' '}
-                            <small className="text-muted">...</small>
-                        </p>
-                    </div>
-                    <div className="card">
-                        <img src={card} className="card-img-top logo" alt="..." />
-                        <div className="card-body">
-                            {' '}
-                            <h5 className="card-title">
-                                {' '}
-                                Curchinflais Node Js
-                            </h5>
-                            <p className="card-text">Developer</p>
-                            <p className="card-text">
-                                {' '}
-                                <small className="text-muted">...</small>
-                            </p>
-                        </div>{' '}
-                    </div>
-                    <div className="card">
-                        <img src={card} className="card-img-top logo" alt="..." />{' '}
-                        <div className="card-body">
-                            <h5 className="card-title">Developer Fullstack</h5>
-                            <p className="card-text">Developer</p>{' '}
                             <p className="card-text">
                                 <small className="text-muted">...</small>
                             </p>
                         </div>
+                </div>
+
+                <div className="card col-md">
+                    <img src={card} className="card-img-top logo" alt="..." />
+
+                    <div className="card-body">
+                        <h5 className="card-title">Santiago Paredes</h5>{' '}
+                        <p className="card-text">Developer</p>
+                        <p className="card-text">
+                            {' '}
+                            <small className="text-muted">...</small>
+                        </p>
                     </div>
                 </div>
+
+              
+          
+                    
+                
             </div>
         </main>
     );

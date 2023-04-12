@@ -1,3 +1,3 @@
-export const OcultarMenu=()=>{
-    document.body.classList.toggle('toggle-sidebar')
-}
+export const OcultarMenu = () => {
+    document.body.classList.toggle('toggle-sidebar');
+};

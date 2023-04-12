@@ -13,7 +13,7 @@ import jwtDecode from 'jwt-decode';
 import * as cifrado from 'js-sha512';
 import MiSesion from '../../models/MiSesion';
 import { propUsuario } from '../../models/MisInterfases';
-import { act } from '@testing-library/react';
+//import { act } from '@testing-library/react';
 
 export const Registro = () => {
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const Registro = () => {
     /* se crean las variables para capturar la informaciaon*/
     let { nombreUsuario, correoUsuario, passwordUsuario, dobleEnlace, objeto } =
         useFormulario<CrearUsuario>(new CrearUsuario('', '', ''));
-
+/*funcion para limiar losformularios de caulquier informacion basura */
     const LimpiarForm = (formulario: HTMLFormElement) => {
         formulario.reset();
 
@@ -39,7 +39,7 @@ export const Registro = () => {
 
         formulario.classList.remove('was-validated');
     };
-
+/*mensaje de erro si no se puede registrar */
     const MensajeError = () => {
         toast('🦄 No se puede crear el Usuario!', {
             position: 'top-right',
@@ -95,7 +95,7 @@ export const Registro = () => {
                                     <div className="d-flex">
                                         <Link to="/">
                                             <img
-                                                className="logoimg"
+                                                className="logo d-flex align-items-center"
                                                 src={logo}
                                                 alt=""
                                             />

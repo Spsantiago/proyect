@@ -1,16 +1,68 @@
 import { Link } from 'react-router-dom';
-import { MenuSuperior } from '../../container/MenuSuperior';
+import logo from '../../../assets/img/logo.jpg'
 
 
 export const Principal = () => {
     return (
         <div>
-        <MenuSuperior/>
+          <header
+                id="header"
+                className="header fixed-top d-flex align-items-center "
+            >
+                <div className="d-flex align-items-center justify-content-between">
+                    <Link
+                        to="/"
+                        className="logo d-flex align-items-center"
+                    >
+                        <img src={logo} alt="Roger Bernal" className='logo d-flex align-items-center' />
+                        <span className="d-none d-md-block">RogerShop</span>
+                    </Link>
+                </div>
+
+                <nav className="header-nav ms-auto">
+                    <ul className="d-flex align-items-center"> 
+                    <Link
+                                className="nav-link nav-icon"
+                                to="/dashboard"
+                                data-bs-toggle=""
+                            >
+                                <span className='footer'>
+                                    Dashboard
+                                </span>
+                             
+                            </Link>      
+                        <Link
+                                className="nav-link nav-icon"
+                                to="/inicioSesion"
+                                data-bs-toggle=""
+                            >
+                                <span className='footer'>
+                                    Iniciar Sesión
+                                </span>
+                             
+                            </Link>
+                            {/*<!-- End Notification Icon -->*/}
+
+
+                            <Link
+                                className="nav-link nav-icon"
+                                to="/Registro"
+                                data-bs-toggle=""
+                            >
+                                <span className='footer'>
+                                    Registrarse
+                                </span>
+                            </Link>
+                            {/*<!-- End Messages Icon -->*/}
+                    </ul>
+                </nav>
+                {/*<!-- End Icons Navigation -->*/}
+            </header>
             <section id="hero" className="hero d-flex align-items-center">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-4">
-                            <h2 data-aos="fade-up">Productos Para Cablleros</h2>
+                            <h2 data-aos="fade-up">Productos Para Caballeros</h2>
                             <blockquote data-aos="fade-up" data-aos-delay="100">
                                 <p>
                                     Los mejores productos para mejorar tu estilo
@@ -69,7 +121,7 @@ export const Principal = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md-1 footer-contact text-center text-md-start">
+                            <div className="col-lg-2 col-md footer-contact text-center text-md-start">
                                 <h4>Contact Us</h4>
                                 <p>
                                     A108 Adam Street <br />
@@ -89,7 +141,7 @@ export const Principal = () => {
                         <div className="copyright">
                             &copy; Copyright{' '}
                             <strong>
-                                <span>Santiago Paredes</span>
+                                <a href='https://instagram.com/mspp._10?igshid=ZDdkNTZiNTM=' target='_blank' rel="noreferrer">Santiago Paredes</a>
                             </strong>
                             . All Rights Reserved
                         </div>

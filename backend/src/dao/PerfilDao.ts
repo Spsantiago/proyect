@@ -1,12 +1,12 @@
 import { Response } from 'express';
-import PerfilSechema from '../schema/PerfilSchema';
+import PerfilSchema from '../schema/PerfilSchema';
 import UsuarioSchema from '../schema/UsuarioSchema';
 
 class PerfilDao {
     // sacar los perfiles de la base y pasarselos al cliente
     protected static async consultarPerfiles(res: Response): Promise<any> {
         //se hace la consulta
-        const datos = await PerfilSechema.find().sort({ _id: -1 });
+        const datos = await PerfilSchema.find().sort({ _id: -1 });
         //entrega la consulta
         res.status(200).json(datos);
     }
@@ -19,15 +19,14 @@ class PerfilDao {
         //limpia todo lo que pueda enviar de mas el frontend
         delete parametros._id;
         delete parametros.datosUsuario;
-
         //verificaion si el perfil existe
-        const existe = await PerfilSechema.findOne(parametros);
+        const existe = await PerfilSchema.findOne(parametros);
 
         if (existe) {
             res.status(400).json({ respuesta: 'El perfil ya existe...' });
         } else {
             //se crea el perfil si no existe
-            const objPerfil = new PerfilSechema(parametros);
+            const objPerfil = new PerfilSchema(parametros);
             objPerfil
                 .save()
                 .then((miObjeto) => {
@@ -61,10 +60,10 @@ class PerfilDao {
             });
         } else {
             //si el perfil no tiene usuarios si se puede eliminar
-            const existe = await PerfilSechema.findById(identifiacador).exec();
+            const existe = await PerfilSchema.findById(identifiacador).exec();
             if (existe) {
                 //se pasan respuestas al frontend
-                PerfilSechema.deleteOne(
+                PerfilSchema.deleteOne(
                     { _id: identifiacador },
                     (miError: any, objeto: any) => {
                         if (miError) {
@@ -91,10 +90,10 @@ class PerfilDao {
     ): Promise<any> {
         //verificaion si el perfil existe
         // const existe = await PerfilSechema.findById(identifiacador);
-        const existe = await PerfilSechema.findById(identifiacador).exec();
+        const existe = await PerfilSchema.findById(identifiacador).exec();
         if (existe) {
             //se elimina el perfil
-            PerfilSechema.findByIdAndUpdate(
+            PerfilSchema.findByIdAndUpdate(
                 { _id: identifiacador },
                 { $set: parametro }
             )
@@ -122,7 +121,7 @@ class PerfilDao {
     ): Promise<any> {
         //se hace la consulta
         const jsonPerfil = { _id: identificador };
-        const existePerfil = await PerfilSechema.findOne(jsonPerfil).exec();
+        const existePerfil = await PerfilSchema.findOne(jsonPerfil).exec();
         //entrega la consulta
         if (existePerfil) {
             res.status(200).json(existePerfil);

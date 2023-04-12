@@ -37,7 +37,6 @@ export const Ruteo = () => {
                 <Route path="/" element={<LazyPrincipal />} />
                 <Route path="/inicioSesion" element={<LazyInicioSesion />} />
                 <Route path="/Registro" element={<LazyRegistro />} />
-
                 <Route element={<Vigilante/>}>
                     <Route path="/dashboard/*" element={<LazyTablero />} />
                 </Route>

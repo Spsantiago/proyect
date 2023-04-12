@@ -6,7 +6,7 @@ import { propSesion } from '../models/MisInterfases';
 import { ContextoUsuario } from './ContextoUsuario';
 
 const UsuarioSesion: FC<propSesion> = ({ children }) => {
-    let UsuarioCargado = new MiSesion('', '', '');
+    let usuarioCargado = new MiSesion("","","");
     const actualizar = (objUsuario: MiSesion) => {
         setAutenticado(objUsuario);
     };
@@ -14,7 +14,7 @@ const UsuarioSesion: FC<propSesion> = ({ children }) => {
         const elToken = String(localStorage.getItem('token'));
         try {
             const objJWTRecibido: any = jwtDecode(elToken);
-            UsuarioCargado = new MiSesion(
+            usuarioCargado = new MiSesion(
                 objJWTRecibido.codUsuario,
                 objJWTRecibido.correo,
                 objJWTRecibido.perfil
@@ -23,7 +23,7 @@ const UsuarioSesion: FC<propSesion> = ({ children }) => {
             console.log('Error');
         }
     }
-    const [autenticado, setAutenticado] = useState<MiSesion>(UsuarioCargado);
+    const [autenticado, setAutenticado] = useState<MiSesion>(usuarioCargado);
     return (
         <ContextoUsuario.Provider value={{ autenticado, actualizar }}>
             {children}

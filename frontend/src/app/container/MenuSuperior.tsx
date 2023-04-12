@@ -15,25 +15,22 @@ export const MenuSuperior = () => {
         event.preventDefault();
         localStorage.removeItem('token');
         navegacion('/');
-    }; const dashboard = (event: MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        localStorage.removeItem('token');
-        navegacion('/dashboard');
     };
+
     return (
         <div>
             {' '}
             <header
                 id="header"
-                className="header fixed-top d-flex align-items-center"
+                className="header fixed-top d-flex align-items-center sticked"
             >
                 <div className="d-flex align-items-center justify-content-between">
                     <Link
-                        to="/"
+                        to="principal"
                         className="logo d-flex align-items-center"
                     >
-                        <img src={logo} alt="Roger Bernal" className='logoimg' />
-                        <span className="d-none d-lg-block">RogerShop</span>
+                        <img src={logo} alt="Roger Bernal"  />
+                        <span className="d-none d-md-block">RogerShop</span>
                     </Link>
                     <i className="bi bi-list toggle-sidebar-btn" onClick={OcultarMenu}></i>
                 </div>
@@ -58,20 +55,10 @@ export const MenuSuperior = () => {
     <!-- End Search Bar -->*/}
 
                 <nav className="header-nav ms-auto">
-                    <ul className="d-flex align-items-center">
-                        <li className="nav-item d-block d-lg-none">
-                            <a
-                                className="nav-link nav-icon search-bar-toggle "
-                                href="/#"
-                            >
-                                <i className="bi bi-search"></i>
-                            </a>
-                        </li>
-                        {/*<!-- End Search Icon-->*/}    
-                        
+                    <ul className="d-flex align-items-center">       
                         <Link
                                 className="nav-link nav-icon"
-                                to="/inicioSesion"
+                                to="/dashboard"
                                 data-bs-toggle=""
                             >
                                 <i className="bi bi-bell"></i>
@@ -84,7 +71,7 @@ export const MenuSuperior = () => {
 
                             <Link
                                 className="nav-link nav-icon"
-                                to="/Registro"
+                                to="/dashboard"
                                 data-bs-toggle=""
                             >
                                 <i className="bi bi-chat-left-text"></i>
@@ -104,7 +91,7 @@ export const MenuSuperior = () => {
                                 <img
                                     src={about}
                                     alt="Profile"
-                                    className="rounded-circle logoimg"
+                                    className="rounded-circle"
                                 />
                                 <span className="d-none d-md-block dropdown-toggle ps-2">
                                     {correoUsuario}
@@ -122,14 +109,13 @@ export const MenuSuperior = () => {
                                 </li>
 
                                 <li>
-                                    <a
-                                    onClick={dashboard}
+                                    <Link
                                         className="dropdown-item d-flex align-items-center"
-                                        href="/#"
+                                        to="/dashboard"
                                     >
                                         <i className="bi bi-person"></i>
                                         <span>My Profile</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />

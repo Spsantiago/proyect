@@ -4,7 +4,7 @@ import { BrowserRouter as Browser } from 'react-router-dom';
 import {Suspense} from 'react'
 import { Ruteo } from './app/utils/routes/Ruteo';
     
-import { MenuSuperior } from './app/container/MenuSuperior';
+
 
 const Loading =(
     <div className="spinner-grow text-center" style={{width: "3rem" ,height: "3rem"}} role="status">
@@ -16,7 +16,6 @@ function App() {
     return (
        
             <Browser>
-          
             <Suspense fallback={Loading}>
                 <Ruteo/>  
             </Suspense>
