@@ -35,7 +35,7 @@ class UsuarioDao {
                         const miToken = jwt.sign(datosVisibles, llavePrivada, {
                             expiresIn: 86400,
                         });
-                        res.status(200).json({ tokenSesion: miToken });
+                        res.status(200).json({ token: miToken });
                     } else {
                         res.status(400).json({
                             respuesta: 'Credenciales Incorrectas',
@@ -115,7 +115,7 @@ class UsuarioDao {
         res: Response
     ): Promise<any> {
         //validar si el Perfil existe
-        const nombrPerfilPorDefecto= String(process.env.PERFIL_USUARIO_EXTERNO)
+        const nombrPerfilPorDefecto= String(process.env.USUARIO_EXTERNO)
         const jsonPerfil ={nombrePerfil:nombrPerfilPorDefecto}
         const existePerfil = await PerfilSchema.findOne(jsonPerfil).exec()
         if (existePerfil) {
@@ -144,6 +144,7 @@ class UsuarioDao {
                     const misDatos = {
                         codUsuario: miObjeto._id,
                         correo: parametros.correoUsuario,
+                        perfil:nombrPerfilPorDefecto
                     };
                     const llave = String(process.env.CLAVE);
                     const Token = jwt.sign(misDatos, llave, {

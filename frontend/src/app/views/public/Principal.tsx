@@ -1,63 +1,12 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/img/logo.jpg'
+import { Header } from './Header';
 
 
 export const Principal = () => {
     return (
         <div>
-          <header
-                id="header"
-                className="header fixed-top d-flex align-items-center "
-            >
-                <div className="d-flex align-items-center justify-content-between">
-                    <Link
-                        to="/"
-                        className="logo d-flex align-items-center"
-                    >
-                        <img src={logo} alt="Roger Bernal" className='logo d-flex align-items-center' />
-                        <span className="d-none d-md-block">RogerShop</span>
-                    </Link>
-                </div>
-
-                <nav className="header-nav ms-auto">
-                    <ul className="d-flex align-items-center"> 
-                    <Link
-                                className="nav-link nav-icon"
-                                to="/dashboard"
-                                data-bs-toggle=""
-                            >
-                                <span className='footer'>
-                                    Dashboard
-                                </span>
-                             
-                            </Link>      
-                        <Link
-                                className="nav-link nav-icon"
-                                to="/inicioSesion"
-                                data-bs-toggle=""
-                            >
-                                <span className='footer'>
-                                    Iniciar Sesión
-                                </span>
-                             
-                            </Link>
-                            {/*<!-- End Notification Icon -->*/}
-
-
-                            <Link
-                                className="nav-link nav-icon"
-                                to="/Registro"
-                                data-bs-toggle=""
-                            >
-                                <span className='footer'>
-                                    Registrarse
-                                </span>
-                            </Link>
-                            {/*<!-- End Messages Icon -->*/}
-                    </ul>
-                </nav>
-                {/*<!-- End Icons Navigation -->*/}
-            </header>
+         <Header/>
             <section id="hero" className="hero d-flex align-items-center">
                 <div className="container">
                     <div className="row">

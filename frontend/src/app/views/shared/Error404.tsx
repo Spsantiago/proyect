@@ -1,19 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/img/logo.jpg';
-import { MenuSuperior } from '../../container/MenuSuperior';
+
 export const Error404 = () => {
+    const navigate = useNavigate()
     return (
         <div
-            id="main"
-            className=" colorB min-vh-100 d-flex flex-column align-items-center justify-content-center"
-        >
-            <MenuSuperior/>
+            className=" colorB min-vh-100 d-flex flex-column align-items-center justify-content-center">
             <h1>404</h1>
             <h2>La pagina que estas buscando no existe.</h2>
-            <Link className="btn btn-outline-dark" to="/dashboard">
-                Volver al Inicio
-            </Link>
-            <Link to="/dashboard">
+            <button className="btn btn-outline-dark" onClick={()=>{navigate(-1)}}>
+               Regresar
+            </button>
+            <Link to=''onClick={()=>{navigate(-1)}}>
                 <img src={logo} className="img-fluid" alt="Page Not Found" />
             </Link>
             

@@ -63,24 +63,20 @@ class PerfilDao {
             const existe = await PerfilSchema.findById(identifiacador).exec();
             if (existe) {
                 //se pasan respuestas al frontend
-                PerfilSchema.deleteOne(
-                    { _id: identifiacador },
-                    (miError: any, objeto: any) => {
-                        if (miError) {
-                            res.status(400).json({
-                                respuesta: 'Error al einimar el Perfil',
-                            });
-                        } else {
-                            res.status(200).json({ eliminado: objeto });
-                        }
-                    }
-                );
+                PerfilSchema.deleteOne({ _id: identifiacador })
+                    .then((objeto) => {
+                        res.status(200).json({ eliminado: objeto });
+                    })
+                    .catch(() => {
+                        res.status(400).json({
+                            respuesta: 'Error al einimar el Perfil',
+                        });
+                    });
             } else {
                 res.status(400).json({ respuesta: 'El perfil NO existe' });
             }
         }
     }
-    
     //se actualiza un perfil por codigo especifico
     protected static async actualizarPerfil(
         identifiacador: any,

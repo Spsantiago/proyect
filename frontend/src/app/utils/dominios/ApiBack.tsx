@@ -6,6 +6,7 @@ const ApiBack = {
     PERFILES_OBTENER:'/api/public/perfil/todos',
     PERFILES_CREAR:'/api/public/perfil/crear',
     PERFILES_ELIMINAR:'/api/public/perfil/eliminar',
-    PERFILES_OBTENER_UNO:'/api/public/perfil/uno'
+    PERFILES_OBTENER_UNO:'/api/public/perfil/uno',
+    PERFILES_ACTUALIZAR:'/api/public/perfil/actualizar'
 };
 export default ApiBack;

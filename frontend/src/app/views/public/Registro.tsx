@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServicioPublico from '../../services/ServicioPublico';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import CrearUsuario from '../../models/CrearUsuario';
 import logo from '../../../assets/img/logo.jpg';
 import { ContextoUsuario } from '../../security/ContextoUsuario';
@@ -13,18 +12,28 @@ import jwtDecode from 'jwt-decode';
 import * as cifrado from 'js-sha512';
 import MiSesion from '../../models/MiSesion';
 import { propUsuario } from '../../models/MisInterfases';
+import { MensajeTostify } from '../../utils/function/MensajeToastify';
 //import { act } from '@testing-library/react';
 
 export const Registro = () => {
     const navigate = useNavigate();
+
     const { actualizar } = useContext(ContextoUsuario) as propUsuario;
+
+
     /*variable para tomar un tipo de dato  */
     type formularioHtml = React.FormEvent<HTMLFormElement>;
+
+
     /* Se crea un hooks useState para saber si esta o no en proceso  */
     const [enProceso, setEnProceso] = useState<boolean>(false);
+
+
     /* se crean las variables para capturar la informaciaon*/
     let { nombreUsuario, correoUsuario, passwordUsuario, dobleEnlace, objeto } =
         useFormulario<CrearUsuario>(new CrearUsuario('', '', ''));
+
+
 /*funcion para limiar losformularios de caulquier informacion basura */
     const LimpiarForm = (formulario: HTMLFormElement) => {
         formulario.reset();
@@ -39,19 +48,8 @@ export const Registro = () => {
 
         formulario.classList.remove('was-validated');
     };
-/*mensaje de erro si no se puede registrar */
-    const MensajeError = () => {
-        toast('🦄 No se puede crear el Usuario!', {
-            position: 'top-right',
-            autoClose: 6000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'dark',
-        });
-    };
+
+
 
     const verificarFormulario = async (fh: formularioHtml) => {
         fh.preventDefault();
@@ -79,11 +77,12 @@ export const Registro = () => {
                 setEnProceso(false);
             } else {
                 LimpiarForm(formularioActual);
-                MensajeError();
+                MensajeTostify('error','No se puede crear el usuario, el Correo ya se encuentra registrado',6000)
             }
         }
     };
 
+    
     return (
         <div>
             <main>

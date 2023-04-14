@@ -7,6 +7,7 @@ import { Error404 } from '../../views/shared/Error404';
 import { Vigilante } from '../../security/Vigitante';
 import UsuarioSesion from '../../security/UsuarioSesion';
 import { TableroPrincipal } from '../../container/TableroPrincipal';
+import { Team } from '../../views/shared/Team';
 
 /*componentes lazy deben iniciar con mayuscula  */
 const LazyPrincipal = lazy(() =>
@@ -29,12 +30,19 @@ const LazyTablero = lazy(() =>
         default: TableroPrincipal,
     }))
 );
+const LazyTeam = lazy(() =>
+    import('../../views/shared/Team').then(() => ({
+        default: Team,
+    }))
+);
 
 export const Ruteo = () => {
     return (
         <UsuarioSesion>
             <Routes>
                 <Route path="/" element={<LazyPrincipal />} />
+                <Route path="/team" element={<LazyTeam />} />
+
                 <Route path="/inicioSesion" element={<LazyInicioSesion />} />
                 <Route path="/Registro" element={<LazyRegistro />} />
                 <Route element={<Vigilante/>}>
