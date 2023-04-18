@@ -43,7 +43,6 @@ export const Header = () => {
                             <span className="footer">Empezar</span>
                         </Link>
                         {/*<!-- End Notification Icon -->*/}
-<a href='mailto:foo@bar.com'>mailto</a>
                         <Link
                             className="nav-link nav-icon"
                             to="/Registro"

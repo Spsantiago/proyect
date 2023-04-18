@@ -11,15 +11,34 @@ export const MenuSuperior = () => {
     const miUsuario = useContext(ContextoUsuario);
     const correoUsuario = miUsuario?.autenticado.correo;
 
+    let avatarUsuario= String(localStorage.getItem('avatar'))
+
     const cerrarSesion = (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
         localStorage.removeItem('token');
         navegacion('/');
     };
+    const imageOnLoadHandler = (
+        event: React.SyntheticEvent<HTMLImageElement, Event>
+      ) => {
+        console.log(
+          `The image with url of ${event.currentTarget.src} has been loaded`
+        );
+        if (event.currentTarget.className !== "error") {
+          event.currentTarget.className = "success";
+        }
+      };
+    
+      // This function is triggered if an error occurs while loading an image
+      const imageOnErrorHandler = (
+        event: React.SyntheticEvent<HTMLImageElement, Event>
+      ) => {
+        event.currentTarget.src = about;
+        event.currentTarget.className = "error";
+      }
 
     return (
         <div>
-            {' '}
             <header
                 id="header"
                 className="header fixed-top d-flex align-items-center sticked"
@@ -88,8 +107,9 @@ export const MenuSuperior = () => {
                                 href="/#"
                                 data-bs-toggle="dropdown"
                             >
-                                <img
-                                    src={about}
+                                <img onLoad={imageOnLoadHandler}
+                                    onError={imageOnErrorHandler}
+                                    src={avatarUsuario}
                                     alt="Profile"
                                     className="rounded-circle"
                                 />

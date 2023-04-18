@@ -8,6 +8,7 @@ import ConectionDB from './ConectionDB';
 import apiPerfilRuta from '../route/PerfilRoute';
 import apiUsuarioRuta from '../route/UsuarioRoute';
 import seguridad from '../middleware/Seguidad';
+import usuarioPrivateRoute from '../route/UsuarioPrivateRoute';
 
 class Servidor {
     public app: express.Application;
@@ -34,8 +35,13 @@ class Servidor {
     }
 
     public iniciarRutas() {
-        this.app.use('/api/public/perfil',seguridad.analizarToken,apiPerfilRuta);
+        //parte publica
         this.app.use('/api/public/usuario', apiUsuarioRuta);
+
+        //parte Privada
+        this.app.use('/api/private/perfil',seguridad.analizarToken,apiPerfilRuta);
+        this.app.use('/api/private/usuario',seguridad.analizarToken,usuarioPrivateRoute)
+
     }
 
     public iniciarServidor() {

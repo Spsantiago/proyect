@@ -57,6 +57,7 @@ export const InicioSesion = () => {
                 );
                 actualizar(usuarioCargado);
                 localStorage.setItem('token', resultado.token);
+                localStorage.setItem('avatar', resultado.avatar);
                 navigate('/dashboard');
                 setEnProceso(false);
             } else {

@@ -43,8 +43,9 @@ export const PerfilListado = () => {
                                 <thead>
                                     <tr>
                                         <th style={{ width: '20%' }}>#</th>
-                                        <th style={{ width: '65%' }}>Nombre</th>
+                                        <th style={{ width: '55%' }}>Nombre</th>
                                         <th style={{ width: '15%' }}>Estado</th>
+                                        <th style={{ width: '10%' }}>Usuarios</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,6 +58,7 @@ export const PerfilListado = () => {
                                                     ? 'Activo'
                                                     : 'Inactivo'}
                                             </td>
+                                            <td className='text-center'>{perfil.cantUsuarios}</td>
                                         </tr>
                                     ))}
                                 </tbody>

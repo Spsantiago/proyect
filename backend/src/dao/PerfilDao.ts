@@ -10,7 +10,14 @@ class PerfilDao {
         //entrega la consulta
         res.status(200).json(datos);
     }
-
+    /*obtener perfiles con orden y contando la cantidad de usuarios que tiene el perfil  */
+    protected static async obtenerPerfiles(res:Response):Promise<any>{
+        const datos= await PerfilSchema.aggregate([
+            {$lookup:{from :'Usuario',localField:'_id',foreignField:'codPerfil',as :'cantUsuarios'}},
+            {$addFields:{cantUsuarios:{$size:'$cantUsuarios'}}}
+        ]).sort({_id:1})
+        res.status(200).json(datos)
+    }
     //se crea un perfil
     protected static async crearPerfil(
         parametros: any,
@@ -21,7 +28,6 @@ class PerfilDao {
         delete parametros.datosUsuario;
         //verificaion si el perfil existe
         const existe = await PerfilSchema.findOne(parametros);
-
         if (existe) {
             res.status(400).json({ respuesta: 'El perfil ya existe...' });
         } else {

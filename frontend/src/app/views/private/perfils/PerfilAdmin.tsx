@@ -37,7 +37,6 @@ export const PerfilAdmin = () => {
         obtenerPerfiles();
     };
 
-
     useEffect(() => {
         obtenerPerfiles();
     }, []);
@@ -68,7 +67,9 @@ export const PerfilAdmin = () => {
                                         <th style={{ width: '25%' }}>#</th>
                                         <th style={{ width: '40%' }}>Nombre</th>
                                         <th style={{ width: '15%' }}>Estado</th>
-                                        <th style={{ width: '20%' }}></th>
+                                        <th style={{ width: '0%' }}></th>
+                                        <th style={{ width: '10%' }}>Acciones</th>
+                                        <th style={{ width: '10%' }}>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,27 +82,53 @@ export const PerfilAdmin = () => {
                                                     ? 'Activo'
                                                     : 'Inactivo'}
                                             </td>
+                                            <td className="text-center">
+                                                {perfil.cantUsuarios}
+                                            </td>
                                             <td>
-                                                <button
-                                                    className="btn mx-2 btn-md"
-                                                    onClick={(e) => { e.preventDefault(); setobjPer(perfil); setShow(true); }}
+                                                {perfil.cantUsuarios === 0 ? ( <button
+                                                        className="btn mx-2 btn-md"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setobjPer(perfil);
+                                                            setShow(true);
+                                                        }}
+                                                    >
+                                                        <i
+                                                            className="fa-solid fa-trash-can"
+                                                            style={{
+                                                                color: '#fc0a0a',
+                                                            }}
+                                                        ></i>
+                                                    </button>
+                                                    
+                                                ) : (
+                                                   <button className="btn mx-2 btn-md">
+                                                        {' '}
+                                                        <i
+                                                            className="fa-solid fa-trash-can"
+                                                            style={{
+                                                                color: '#00000070',
+                                                            }}
+                                                        ></i>
+                                                    </button>
+                                                )}
+                                            </td>
+                                            <td>
+                                                <Link
+                                                    to={
+                                                        '/dashboard/updateprofile/' +
+                                                        perfil._id
+                                                    }
                                                 >
-                                                    <i
-                                                        className="fa-solid fa-trash-can"
-                                                        style={{
-                                                            color: ' #fc0a0a',
-                                                        }}
-                                                    ></i>
-                                                </button>
-                                                <Link to={'/dashboard/updateprofile/'+perfil._id}>
-                                                <button className="btn mx-2 btn-md">
-                                                    <i
-                                                        className="fa-solid fa-user-pen"
-                                                        style={{
-                                                            color: '#2626cc',
-                                                        }}
-                                                    ></i>
-                                                </button>
+                                                    <button className="btn mx-2 btn-md">
+                                                        <i
+                                                            className="fa-solid fa-user-pen"
+                                                            style={{
+                                                                color: '#2626cc',
+                                                            }}
+                                                        ></i>
+                                                    </button>
                                                 </Link>
                                             </td>
                                         </tr>
@@ -109,25 +136,34 @@ export const PerfilAdmin = () => {
                                 </tbody>
                             </table>
 
-                            <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+                            <Modal
+                                show={show}
+                                onHide={handleClose}
+                                backdrop="static"
+                                keyboard={false}
+                            >
                                 <Modal.Header closeButton>
                                     <Modal.Title>Deseas Eliminar</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                   Estas Seguro que deseas Elmininar <strong>{objPer.nombrePerfil}</strong>
+                                    Estas Seguro que deseas Elmininar{' '}
+                                    <strong>{objPer.nombrePerfil}</strong>
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button
                                         variant="secondary"
-                                        onClick={(e)=>{setShow(false)}
-                                        }
+                                        onClick={(e) => {
+                                            setShow(false);
+                                        }}
                                     >
                                         Cancelar
                                     </Button>
                                     <Button
                                         variant="primary"
-                                        onClick={(e)=>{ borrarPerfil(objPer._id) 
-                                            setShow(false) }}
+                                        onClick={(e) => {
+                                            borrarPerfil(objPer._id);
+                                            setShow(false);
+                                        }}
                                     >
                                         Eliminar
                                     </Button>
@@ -136,7 +172,7 @@ export const PerfilAdmin = () => {
                         </div>
                     </div>
                 </div>
-                <ToastContainer/>
+                <ToastContainer />
             </main>
         </div>
     );
