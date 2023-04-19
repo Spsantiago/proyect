@@ -37,10 +37,10 @@ class UsuarioPrivateDao {
     ): Promise<any> {
         if (Types.ObjectId.isValid(identificadorPerfil)) {
             const llave = { _id: identificadorPerfil };
-            const cantidad = await UsuarioSchema.countDocuments({
+            const cantUsuarios = await UsuarioSchema.countDocuments({
                 codPerfil: llave,
             });
-            res.status(200).json({ respuesta: cantidad });
+            res.status(200).json({ respuesta: cantUsuarios });
         } else {
             res.status(400).json({ respuesta: 'Identificador Incorrecto ' });
         }

@@ -35,7 +35,7 @@ class UsuarioDao {
                         const miToken = jwt.sign(datosVisibles, llavePrivada, {
                             expiresIn: 86400,
                         });
-                        res.status(200).json({ token: miToken,avatar:objeto.avatarUsuario  });
+                        res.status(200).json({ token: miToken, avatar:objeto.avatarUsuario  });
                     } else {
                         res.status(400).json({
                             respuesta: 'Credenciales Incorrectas',

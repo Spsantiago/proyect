@@ -11,19 +11,18 @@ export const MenuLateral = () => {
     let opciones = [];
     const miUsuario = useContext(ContextoUsuario);
     const nombrePerfil = miUsuario?.autenticado.perfil;
-  
+
     switch (nombrePerfil) {
-      case "Invitado": 
-        opciones = opcionesInvitado;
-      
-        break;
-  
-      default:
-         opciones = opcionesAdmin;
-        break;
+        case 'Admin':
+            opciones = opcionesAdmin;
+            break;
+        default:
+            opciones = opcionesInvitado;
+            break;
     }
+    
     opciones = opcionesAdmin;
-  
+
     return (
         <aside id="sidebar" className="sidebar">
             <Link
@@ -31,9 +30,8 @@ export const MenuLateral = () => {
                 className="d-flex align-items-center pb-3 mb-3  flex-column border-bottom"
             >
                 <img src={logo} alt="noLogo" className="d-flex logoimg" />
-                
-                    <span className="fs-5 fw-semibold">{nombrePerfil}</span>
-                   
+
+                <span className="fs-5 fw-semibold">{nombrePerfil}</span>
             </Link>
 
             <ul className="sidebar-nav" id="sidebar-nav">

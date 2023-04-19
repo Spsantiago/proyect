@@ -9,7 +9,7 @@ class PerfilController extends PerfilDao {
 
     //controlador de consulta
     public consulta(req: Request, res: Response) {
-        PerfilController.consultarPerfiles(res);
+        PerfilController.obtenerPerfiles(res);
     }
 
     //controlador de eliminar

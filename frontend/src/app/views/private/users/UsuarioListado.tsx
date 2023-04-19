@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react"
-import Perfil from "../../../models/Perfil"
+
 import ApiBack from "../../../utils/dominios/ApiBack"
 import ServicioPrivado from "../../../services/ServicioPrivado"
 import { Link } from "react-router-dom"
+import Usuario from "../../../models/Usuario"
 
 export const UsuarioListado = () => {
 
-  const [aregloPerfiles, setaregloPerfiles] = useState<Perfil[]>([])
+  const [aregloUsuarios, setaregloUsuarios] = useState<Usuario[]>([])
 
-  const obtenerPerfiles= async()=>{
-    const resultado =await ServicioPrivado.peticionGET(ApiBack.PERFILES_OBTENER)
-    setaregloPerfiles(resultado)
+  const obtenerUsuario= async()=>{
+    const resultado =await ServicioPrivado.peticionGET(ApiBack.USUARIOS_OBTENER)
+    setaregloUsuarios(resultado)
     return resultado
   }
   
   useEffect(() => {
-   obtenerPerfiles()
+   obtenerUsuario()
 },[])
   
 
@@ -41,22 +42,25 @@ export const UsuarioListado = () => {
       <thead>
     <tr>
       <th style={{width:'20%'}}>#</th>
-      <th style={{width:'65%'}}>Nombre</th>
+      <th style={{width:'35%'}}>Nombre</th>
       <th style={{width:'15%'}}>Estado</th>
-
+      <th style={{width:'30%'}}>Correo</th>
     </tr>
   </thead>
   <tbody>
-    {aregloPerfiles.map((perfil, indice)=>(
+    {aregloUsuarios.map((usuario, indice)=>(
       <tr key={indice}>
         <td>
           {indice + 1}
         </td>
         <td>
-          {perfil.nombrePerfil}
+          {usuario.nombreUsuario}
         </td>
         <td>
-          {perfil.estadoPerfil === 1 ? 'Activo':'Inactivo'}
+          {usuario.estadoUsuario === 1 ? 'Activo':'Inactivo'}
+        </td>
+        <td>
+          {usuario.correoUsuario}
         </td>
       </tr>
     ))}

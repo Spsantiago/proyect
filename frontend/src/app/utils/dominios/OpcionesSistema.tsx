@@ -8,8 +8,8 @@ const opcionesAdmin=[
     ]},
         {nombre:'Usuarios',icono:'bi bi-person-lines-fill',ruta:'',hijos:[
             {nombre:'Listado', icono:'bi bi-circle',ruta:'/dashboard/listusers'},
-            {nombre: 'Nuevo',icono:'bi bi-circle', ruta:'/dashboard/admuser'},
-            {nombre:'Administración',icono:'bi bi-circle',ruta:'/dashboard/admuser'}
+            {nombre: 'Nuevo',icono:'bi bi-circle', ruta:'/dashboard/addusers'},
+            {nombre:'Administración',icono:'bi bi-circle',ruta:'/dashboard/adminusers'}
         ]}
 ]
 

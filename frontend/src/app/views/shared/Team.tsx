@@ -44,10 +44,10 @@ export const Team = () => {
                                 </div>
                                 <div className="member-info">
                                     <div className="social">
-                                        <a href="/">
+                                        <a href="#">
                                             <i className="bi bi-facebook"></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="https://www.instagram.com/roger.sh0p/" target='_blanck'>
                                             <i className="bi bi-instagram"></i>
                                         </a>
                                     </div>
@@ -74,10 +74,10 @@ export const Team = () => {
                                 </div>
                                 <div className="member-info">
                                     <div className="social">
-                                        <a href="/">
+                                        <a href="https://www.instagram.com/mspp._10/?igshid=ZDdkNTZiNTM%3D" target='_blanck'>
                                             <i className="bi bi-instagram"></i>
                                         </a>
-                                        <a href="/">
+                                        <a href="#">
                                             <i className="bi bi-linkedin"></i>
                                         </a>
                                     </div>

@@ -3,13 +3,7 @@ import PerfilSchema from '../schema/PerfilSchema';
 import UsuarioSchema from '../schema/UsuarioSchema';
 
 class PerfilDao {
-    // sacar los perfiles de la base y pasarselos al cliente
-    protected static async consultarPerfiles(res: Response): Promise<any> {
-        //se hace la consulta
-        const datos = await PerfilSchema.find().sort({ _id: -1 });
-        //entrega la consulta
-        res.status(200).json(datos);
-    }
+
     /*obtener perfiles con orden y contando la cantidad de usuarios que tiene el perfil  */
     protected static async obtenerPerfiles(res:Response):Promise<any>{
         const datos= await PerfilSchema.aggregate([

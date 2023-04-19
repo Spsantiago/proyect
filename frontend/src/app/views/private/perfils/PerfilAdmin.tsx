@@ -64,12 +64,12 @@ export const PerfilAdmin = () => {
                             <table className="table table-hover table-responsive-sm ">
                                 <thead>
                                     <tr>
-                                        <th style={{ width: '25%' }}>#</th>
+                                        <th style={{ width: '20%' }}>#</th>
                                         <th style={{ width: '40%' }}>Nombre</th>
                                         <th style={{ width: '15%' }}>Estado</th>
-                                        <th style={{ width: '0%' }}></th>
-                                        <th style={{ width: '10%' }}>Acciones</th>
-                                        <th style={{ width: '10%' }}>Acciones</th>
+                                        <th style={{ width: '10%' }}>Usuarios</th>
+                                        <th style={{ width: '20%',textAlign:'center'  }}>Acciones</th>
+                                       <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -113,8 +113,6 @@ export const PerfilAdmin = () => {
                                                         ></i>
                                                     </button>
                                                 )}
-                                            </td>
-                                            <td>
                                                 <Link
                                                     to={
                                                         '/dashboard/updateprofile/' +
