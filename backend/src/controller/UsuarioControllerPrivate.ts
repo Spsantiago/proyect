@@ -3,6 +3,10 @@ import UsuarioDao from '../dao/UsuarioDao';
 import UsuarioPrivateDao from '../dao/UsuarioPrivateDao';
 
 class UsuarioPrivateController extends UsuarioPrivateDao {
+    public crear(req: Request, res: Response) {
+        const correo={correoUsuario:req.body.correoUsuario}
+        UsuarioPrivateController.crearUsuario(correo,req.body,res);
+    }
     //controlador cantidad en Perfil
     public eliminar(req: Request, res: Response) {
         UsuarioPrivateController.eliminarUsuario(req.params.codigo,res);

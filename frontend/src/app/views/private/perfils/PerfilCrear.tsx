@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const PerfilCrear = () => {
-    type fromaHtml = React.FormEvent<HTMLFormElement>;
+    type formaHtml = React.FormEvent<HTMLFormElement>;
     const [enProceso, setEnProceso] = useState<boolean>(false);
     let { nombrePerfil, estadoPerfil, dobleEnlace, objeto } =
         useFormulario<Perfil>(new Perfil('', '', 0));
@@ -25,7 +25,7 @@ export const PerfilCrear = () => {
         formulario.estadoPerfil.value = '';
         formulario.classList.remove('was-validated');
     };
-    const enviarFormulario = async (fh: fromaHtml) => {
+    const enviarFormulario = async (fh: formaHtml) => {
         fh.preventDefault();
         setEnProceso(true);
         const formularioActual = fh.currentTarget;
@@ -63,7 +63,7 @@ export const PerfilCrear = () => {
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
-                                <Link to="/dashboar">Inicio</Link>
+                                <Link to="/dashboard">Inicio</Link>
                             </li>
                             <li className="breadcrumb-item active">
                                 Crear Perfiles

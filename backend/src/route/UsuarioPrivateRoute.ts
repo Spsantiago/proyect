@@ -27,6 +27,7 @@ class UsuarioPrivateRoute {
             '/actualizar/:codigo',
             usuarioPrivateController.actualizar
         );
+        this.rutaApi.post('/crear', usuarioPrivateController.crear);
     }
 }
 const usuarioPrivateRoute = new UsuarioPrivateRoute();

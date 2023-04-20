@@ -1,4 +1,4 @@
-export const CovertirBase64 =async(imagenCargada:File)=>{
+export const ConvertirBase64 =async(imagenCargada:File)=>{
     return new Promise((resolve, reject)=>{
         const fileReader=new FileReader()
         fileReader.readAsDataURL(imagenCargada)
