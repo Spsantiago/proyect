@@ -25,8 +25,8 @@ class UsuarioPrivateDao {
             const objUsuario = new UsuarioSchema(parametros);
             objUsuario
                 .save()
-                .then((miObjeto) => { res.status(400).json({ codUsuario: miObjeto._id, }); })
-                .catch(() => { res.status(200).json({ respuesta: 'NO se puede crear el Usuario', }); });
+                .then((miObjeto) => { res.status(200).json({ id: miObjeto._id }); })
+                .catch(() => { res.status(400).json({ respuesta: 'NO se puede crear el Usuario', }); });
         }
     }
 

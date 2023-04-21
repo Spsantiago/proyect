@@ -21,20 +21,14 @@ export const MenuSuperior = () => {
     const imageOnLoadHandler = (
         event: React.SyntheticEvent<HTMLImageElement, Event>
       ) => {
-        console.log(
-          `The image with url of ${event.currentTarget.src} has been loaded`
-        );
-        if (event.currentTarget.className !== "error") {
-          event.currentTarget.className = "success";
         }
-      };
+     
     
       // This function is triggered if an error occurs while loading an image
       const imageOnErrorHandler = (
         event: React.SyntheticEvent<HTMLImageElement, Event>
       ) => {
         event.currentTarget.src = about;
-        event.currentTarget.className = "error";
       }
 
     return (
@@ -187,5 +181,5 @@ export const MenuSuperior = () => {
                 {/*<!-- End Icons Navigation -->*/}
             </header>
         </div>
-    );
-};
+    )
+}

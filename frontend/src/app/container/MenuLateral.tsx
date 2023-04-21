@@ -13,7 +13,7 @@ export const MenuLateral = () => {
     const nombrePerfil = miUsuario?.autenticado.perfil;
 
     switch (nombrePerfil) {
-        case 'Admin':
+        case 'administrador':
             opciones = opcionesAdmin;
             break;
         default:

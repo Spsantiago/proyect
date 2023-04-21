@@ -61,7 +61,7 @@ export const PerfilAdmin = () => {
                 <div className="col-lg-12">
                     <div className="card">
                         <div className="card-body">
-                            <table className="table table-hover table-responsive-sm ">
+                            <table className="table table-hover table-sm ">
                                 <thead>
                                     <tr>
                                         <th style={{ width: '20%' }}>#</th>

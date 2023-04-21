@@ -38,7 +38,7 @@ export const Team = () => {
                                 <div className="member-img">
                                     <img
                                         src={team1}
-                                        className="img-fluid"
+                                        className="img-fluid rounded-circle"
                                         alt="Roger Bernal"
                                     />
                                 </div>
@@ -68,7 +68,7 @@ export const Team = () => {
                                 <div className="member-img">
                                     <img
                                         src={team3}
-                                        className="img-fluid"
+                                        className="img-fluid rounded-circle"
                                         alt=""
                                     />
                                 </div>

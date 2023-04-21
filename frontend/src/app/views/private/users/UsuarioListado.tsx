@@ -38,13 +38,13 @@ export const UsuarioListado = () => {
         <div className="col-lg-12">
           <div className="card">
             <div className="card-body">
-      <table className="table table-hover">
+      <table className="table table-hover table-responsive-sm">
       <thead>
     <tr>
-      <th style={{width:'20%'}}>#</th>
-      <th style={{width:'35%'}}>Nombre</th>
-      <th style={{width:'15%'}}>Estado</th>
-      <th style={{width:'30%'}}>Correo</th>
+      <th >#</th>
+      <th >Nombre</th>
+      <th >Estado</th>
+      <th >Correo</th>
     </tr>
   </thead>
   <tbody>
@@ -62,6 +62,7 @@ export const UsuarioListado = () => {
         <td>
           {usuario.correoUsuario}
         </td>
+      
       </tr>
     ))}
   </tbody>

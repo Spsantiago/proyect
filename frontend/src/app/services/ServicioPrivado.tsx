@@ -16,9 +16,7 @@ class ServicioPrivado{
     }
     public static async peticionPOST(urlServicio:string , miJSON:any){
         const bearer ="Berer "+ String(localStorage.getItem('token'))
-
         const datosEnviar= {method: 'POST', body:JSON.stringify(miJSON), headers: { 'Content-Type': 'application/json; charset=UTF-8', authorization:bearer }}
-
         const url = ApiBack.URL + urlServicio
         const respuesta =fetch(url,datosEnviar)
         .then((respuesta)=>respuesta.json())

@@ -30,7 +30,7 @@ class PerfilDao {
             objPerfil
                 .save()
                 .then((miObjeto) => {
-                    res.status(400).json({
+                    res.status(200).json({
                         respuesta: 'Perfil Creado',
                         id: miObjeto._id,
                     });
