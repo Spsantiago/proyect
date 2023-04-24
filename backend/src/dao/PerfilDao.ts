@@ -110,7 +110,7 @@ class PerfilDao {
         }
     }
 
-    //se busca un perofil por codigo especifico
+    //se busca un perfil por codigo especifico
     protected static async consultarPerfil(
         identificador: any,
         res: Response

@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import UsuarioDao from '../dao/UsuarioDao';
 import UsuarioPrivateDao from '../dao/UsuarioPrivateDao';
 
 class UsuarioPrivateController extends UsuarioPrivateDao {
@@ -16,17 +15,15 @@ class UsuarioPrivateController extends UsuarioPrivateDao {
         UsuarioPrivateController.actualizarUsuario(req.params.codigo,req.body,res);
     }    //controlador de consulta 
     public consulta(req: Request, res: Response) {
-        UsuarioPrivateController.consultarUsuario(res);
+        UsuarioPrivateController.obtenerUsuarios(res);
     }    
     public cantidadEnPerfil(req:Request, res: Response):void{
         UsuarioPrivateController.cantidadUsuarioEnPerfil(req.params.codPerfil,res)
     }
 
-    //controlador de todos los perfiles 
-    public consultaPerfil(req:Request, res: Response):void{
-        UsuarioPrivateController.obtenerUsuariosPerfil(req.params.codPerfil,res)
+    public consultaUsuario(req:Request, res: Response):void{
+        UsuarioPrivateController.obtenerUsuario(req.params.codigo, res)
     }
-
 }
 
 const usuarioPrivateController = new UsuarioPrivateController();

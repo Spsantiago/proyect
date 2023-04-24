@@ -11,22 +11,15 @@ class UsuarioPrivateRoute {
     }
     public configRouter(): void {
         this.rutaApi.get('/todos', usuarioPrivateController.consulta);
-        this.rutaApi.get(
-            '/todos/:codPerfil ',
-            usuarioPrivateController.consultaPerfil
-        );
-        this.rutaApi.get(
-            '/contxperfil/:codPerfil',
-            usuarioPrivateController.cantidadEnPerfil
-        );
-        this.rutaApi.delete(
-            '/eliminar/:codigo',
-            usuarioPrivateController.eliminar
-        );
-        this.rutaApi.put(
-            '/actualizar/:codigo',
-            usuarioPrivateController.actualizar
-        );
+
+        this.rutaApi.get( '/contxperfil/:codPerfil', usuarioPrivateController.cantidadEnPerfil );
+
+        this.rutaApi.delete( '/eliminar/:codigo', usuarioPrivateController.eliminar );
+
+        this.rutaApi.put( '/actualizar/:codigo', usuarioPrivateController.actualizar );
+
+        this.rutaApi.get('/uno/:codigo', usuarioPrivateController.consultaUsuario );
+        
         this.rutaApi.post('/crear', usuarioPrivateController.crear);
     }
 }

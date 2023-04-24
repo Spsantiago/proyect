@@ -5,7 +5,7 @@ class Usuario {
     public nombreUsuario: string;
     public correoUsuario: string;
     public passwordUsuario: string;
-    public fechaRegistorUsuario: Date;
+    public fechaCreacion: Date;
     public estadoUsuario: number;
     public nombreImagenUsuario: string;
     public avatarUsuario: string;
@@ -17,7 +17,7 @@ class Usuario {
         this.nombreUsuario=nom
         this.correoUsuario=cor
         this.passwordUsuario=cla
-        this.fechaRegistorUsuario=fec
+        this.fechaCreacion=fec
         this.estadoUsuario=est
         this.nombreImagenUsuario=nomi
         this.avatarUsuario= ava

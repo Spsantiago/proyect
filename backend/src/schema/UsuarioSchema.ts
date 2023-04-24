@@ -8,6 +8,7 @@ const UsuarioSchema = new Schema<UsuarioEntidad>(
         passwordUsuario: { type: String, required: true, },
         fechaCreacion: { type: Date, default: Date.now(), },
         estadoUsuario: { type: Number, enum: [1, 2, 3], default: 1, },
+        nombreImagenUsuario:{type:String, default:'noAvatar'},
         avatarUsuario :{type:String,default:'noAvatar'},
         codPerfil: { type: Types.ObjectId, ref: 'Perfil', required: true, }, },
     { versionKey: false }

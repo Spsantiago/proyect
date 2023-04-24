@@ -5,5 +5,5 @@ export const obtenerFechaLocal = (fecha: Date | string) => {
 
 export const obtenerHora = (fecha: Date | string) => {
     const fechaLista = new Date(fecha);
-    return fechaLista.toLocaleDateString();
+    return fechaLista.toLocaleTimeString();
 };

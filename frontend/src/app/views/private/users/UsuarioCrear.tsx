@@ -33,7 +33,6 @@ export const UsuarioCrear = () => {
         correoUsuario,
         passwordUsuario,
         nombreImagenUsuario,
-      
         codPerfil,
         dobleEnlace,
         objeto,

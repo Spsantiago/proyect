@@ -7,6 +7,7 @@ class UsuarioEntidad {
     public passwordUsuario: string;
     public fechaCreacion: Date;
     public codPerfil: PerfilEntidad;
+    public nombreImagenUsuario: string;
     public avatarUsuario :string
 
     constructor(
@@ -16,7 +17,8 @@ class UsuarioEntidad {
         password: string,
         fecha: Date,
         codP: PerfilEntidad,
-        image: string
+        image: string,
+        nomi:string
     ) {
         this.nombreUsuario = nomp;
         this.estadoUsuario = estado;
@@ -25,6 +27,7 @@ class UsuarioEntidad {
         this.fechaCreacion = fecha;
         this.codPerfil = codP;
         this.avatarUsuario=image
+        this.nombreImagenUsuario=nomi
     }
 }
 export default UsuarioEntidad;

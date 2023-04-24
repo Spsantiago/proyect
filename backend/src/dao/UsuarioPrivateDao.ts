@@ -29,69 +29,6 @@ class UsuarioPrivateDao {
                 .catch(() => { res.status(400).json({ respuesta: 'NO se puede crear el Usuario', }); });
         }
     }
-
-     //cantidad de usurios en un perfil
-     protected static async cantidadUsuarioEnPerfil(
-        identificadorPerfil: any,
-        res: Response
-    ): Promise<any> {
-        if (Types.ObjectId.isValid(identificadorPerfil)) {
-            const llave = { _id: identificadorPerfil };
-            const cantUsuarios = await UsuarioSchema.countDocuments({
-                codPerfil: llave,
-            });
-            res.status(200).json({ respuesta: cantUsuarios });
-        } else {
-            res.status(400).json({ respuesta: 'Identificador Incorrecto ' });
-        }
-    }
-
-    protected static async obtenerUsuarios(res: Response): Promise<any> {
-        UsuarioSchema.find()
-            .sort({ _id: 1 })
-            .populate('codPerfil')
-            .exec()
-            .then((objeto) => {
-                res.status(200).json(objeto);
-            })
-            .catch((miError) => {
-                console.log(miError);
-                res.status(400).json({ respuesta: 'Error en la consulta' });
-            });
-    }
-
-    protected static async obtenerUsuariosPerfil(
-        identificador: any,
-        res: Response
-    ): Promise<any> {
-        if (Types.ObjectId.isValid(identificador)) {
-            const llave = { _id: identificador };
-            UsuarioSchema.find({ codPerfil: llave })
-                .sort({ _id: -1 })
-                .populate({ path: 'codPerfil', select: 'nombrePerfil' })
-                .exec()
-                .then((objeto) => {
-                    res.status(200).json(objeto);
-                })
-                .catch((miError) => {
-                    console.log(miError);
-                    res.status(400).json({ respuesta: 'Error en la consulta' });
-                });
-        } else {
-            res.status(400).json({ respuesta: 'Identificador  incorrecto ' });
-        }
-    }
-
-    // sacar los usuarios de la base y pasarselos al cliente
-    protected static async consultarUsuario(res: Response): Promise<any> {
-        //se hace la consulta
-        const datos = await UsuarioSchema.find().sort({ _id: -1 });
-        //entrega la consulta
-        res.status(200).json(datos);
-    }
-
-
-
     protected static async eliminarUsuario(
         identifiacador: any,
         res: Response
@@ -116,9 +53,8 @@ class UsuarioPrivateDao {
         } else {
             res.status(200).json({ respuesta: 'el Usuario no existe' });
         }
-    }
-
-    protected static async actualizarUsuario(
+    } 
+     protected static async actualizarUsuario(
         identifiacador: any,
         parametro: any,
         res: Response
@@ -147,6 +83,50 @@ class UsuarioPrivateDao {
         } else {
             res.status(200).json({ respuesta: 'el Usuario no existe' });
         }
+    }  
+     //cantidad de usurios en un perfil
+     protected static async cantidadUsuarioEnPerfil(
+        identificadorPerfil: any,
+        res: Response
+    ): Promise<any> {
+        if (Types.ObjectId.isValid(identificadorPerfil)) {
+            const llave = { _id: identificadorPerfil };
+            const cantUsuarios = await UsuarioSchema.countDocuments({
+                codPerfil: llave,
+            });
+            res.status(200).json({ respuesta: cantUsuarios });
+        } else {
+            res.status(400).json({ respuesta: 'Identificador Incorrecto ' });
+        }
     }
+    protected static async obtenerUsuarios(res: Response): Promise<any> {
+        UsuarioSchema.find()
+            .sort({ _id: 1 })
+            .populate('codPerfil')
+            .exec()
+            .then((objeto) => {
+                res.status(200).json(objeto);
+            })
+            .catch((miError) => {
+                console.log(miError);
+                res.status(400).json({ respuesta: 'Error en la consulta' });
+            });
+    }
+    protected static async obtenerUsuario(
+        identificador: any,
+        res: Response
+    ): Promise<any> {
+        //se hace la consulta
+        const jsonUsuario = { _id: identificador };
+        const datos = await UsuarioSchema.findOne(jsonUsuario).populate({ path: 'codPerfil'}).exec();
+        //entrega la consulta
+        if (datos) {
+            res.status(200).json(datos);
+        } else {
+            res.status(400).json({
+                respuesta: 'No hay un perfil con ese identifiicador',
+            });
+        }
+    }  
 }
 export default UsuarioPrivateDao
