@@ -48,10 +48,10 @@ export const PerfilActual = () => {
             }
         }
     };
+    useEffect(() => {
+        obtenerPerfil();
 
-    useEffect(() =>{
-      obtenerPerfil()
-    },[])
+    },[]);
 
     return (
         <div>
@@ -74,6 +74,7 @@ export const PerfilActual = () => {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Uptade Form Perfil</h5>
+                            {cargaFinalizada ? (
                             <Form
                                 noValidate={enProceso}
                                 onSubmit={enviarFormulario}
@@ -136,7 +137,7 @@ export const PerfilActual = () => {
                                         </Button>
                                     </Col>
                                 </Form.Group>
-                            </Form>
+                            </Form>):'Cargando Form'}
                         </div>
                     </div>
                 </div>

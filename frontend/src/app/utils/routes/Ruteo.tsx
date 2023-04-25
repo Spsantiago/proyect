@@ -8,6 +8,7 @@ import { Vigilante } from '../../security/Vigitante';
 import UsuarioSesion from '../../security/UsuarioSesion';
 import { TableroPrincipal } from '../../container/TableroPrincipal';
 import { Team } from '../../views/shared/Team';
+import { Productos } from '../../views/public/Productos';
 
 /*componentes lazy deben iniciar con mayuscula  */
 const LazyPrincipal = lazy(() =>
@@ -35,6 +36,11 @@ const LazyTeam = lazy(() =>
         default: Team,
     }))
 );
+const LazyProducts = lazy(() =>
+import('../../views/public/Productos').then(() => ({
+    default: Productos,
+}))
+);
 
 export const Ruteo = () => {
     return (
@@ -45,6 +51,8 @@ export const Ruteo = () => {
 
                 <Route path="/inicioSesion" element={<LazyInicioSesion />} />
                 <Route path="/Registro" element={<LazyRegistro />} />
+                <Route path="/productos" element={<LazyProducts/>} />
+
                 <Route element={<Vigilante/>}>
                     <Route path="/dashboard/*" element={<LazyTablero />} />
                 </Route>

@@ -76,15 +76,15 @@ export const UsuarioAdmin = () => {
                 <div className="col-lg-12">
                     <div className="card">
                         <div className="card-body">
-                            <table className="table table-hover table-sm ">
+                            <table className="table table-hover table-sm table-responsive">
                                 <thead>
-                                    <tr>
+                                    <tr >
                                         <th style={{ width: '8%' }}>Nro</th>
-                                        <th style={{ width: '25%' }}>Usuario</th>
-                                        <th style={{ width: '15%' }}>Creación</th>
-                                        <th style={{ width: '10%' }}>Perfil</th>
-                                        <th style={{ width: '10%' }}>Estado</th>
-                                        <th style={{width: '32%'}}> a ver </th>
+                                        <th  style={{ width: '25%' }}>Usuario</th>
+                                        <th className='d-none d-md-table-cell' style={{ width: '15%' }}>Creación</th>
+                                        <th className='d-none  d-md-table-cell' style={{ width: '20%' }}>Perfil</th>
+                                        <th className='d-none d-md-table-cell' style={{ width: '10%' }}>Estado</th>
+                                       <th style={{ width: '22%' }}></th>
                                        
                                     </tr>
                                 </thead>
@@ -92,60 +92,38 @@ export const UsuarioAdmin = () => {
                                     {aregloUsuarios.map((usuario, indice) => (
                                         <tr key={indice}>
                                             <td>{indice + 1}</td>
-                                            <td>{usuario.nombreUsuario}  <br />
-                                                <span className='small color-gray'> {usuario.correoUsuario} </span></td>
-                                            <td>
+                                            <td>{usuario.nombreUsuario} 
+                                                <br/>
+                                                <span className='small color-gray'> {usuario.correoUsuario} </span>
+                                            </td>
+                                            <td className='d-none d-md-table-cell'>
                                             {obtenerFechaLocal( String( usuario?.fechaCreacion ) )}
                                               <br />
                                               <span className='small color-gray'>{obtenerHora( String( usuario?.fechaCreacion ) )}</span>  
                                             </td>
-                                            <td className="text-center">
+                                            <td className='d-none d-md-table-cell justify-content-center'>
                                                 {usuario.codPerfil.nombrePerfil}
-                                              
                                             </td>
+                                            <td className='d-none d-md-table-cell'> {usuario.estadoUsuario===1?'Activo':'Inactivo'} </td>
                                             <td>
                                                 {usuario.estadoUsuario === 2 ? ( <button
-                                                        className="btn mx-2 btn-md"
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            setobjUsu(usuario);
-                                                            setShow(true);
-                                                        }}
+                                                        className="btn mx-2 btn-md justify-content-center"
+                                                        onClick={(e) => { e.preventDefault(); setobjUsu(usuario); setShow(true); }}
                                                     >
-                                                        <i
-                                                            className="fa-solid fa-trash-can"
-                                                            style={{
-                                                                color: '#fc0a0a',
-                                                            }}
-                                                        ></i>
-                                                    </button>
-                                                    
+                                                        <i className="fa-solid fa-trash-can" style={{ color: '#fc0a0a', }} ></i>
+                                                    </button> 
                                                 ) : (
-                                                   <button className="btn mx-2 btn-md">
+                                                   <button className="btn mx-2 btn-md justify-content-center">
                                                         {' '}
-                                                        <i
-                                                            className="fa-solid fa-trash-can"
-                                                            style={{
-                                                                color: '#00000070',
-                                                            }}
-                                                        ></i>
+                                                        <i className="fa-solid fa-trash-can " style={{ color: '#00000070', }} ></i>
                                                     </button>
                                                 )}
-                                                <a
-                                                    href={
-                                                        '/dashboard/updateprofile/' +
-                                                      usuario._id
-                                                    }
-                                                >
+                                                <a href={ '/dashboard/updateusers/' + usuario._id } >
                                                     <button className="btn mx-2 btn-md">
-                                                        <i
-                                                            className="fa-solid fa-user-pen"
-                                                            style={{
-                                                                color: '#2626cc',
-                                                            }}
-                                                        ></i>
+                                                        <i className="fa-solid fa-user-pen" style={{ color: '#2626cc', }} ></i>
                                                     </button>
                                                 </a>
+                                                <a href={'/dashboard/detailsusers/' + usuario._id}> <button className='btn'><i  className="fa-solid fa-magnifying-glass" style={{color: "#050be4"}}></i></button> </a>
                                             </td>
                                         </tr>
                                     ))}

@@ -13,20 +13,31 @@ class UsuarioPrivateDao {
         const nom = parametros.nombreImagenUsuario;
         delete parametros._id;
         delete parametros.datosUsuario;
-        parametros.nombreImagenUsuario = nom.substring( nom.lastIndexOf('\\') + 1 );
+        parametros.nombreImagenUsuario = nom.substring(
+            nom.lastIndexOf('\\') + 1
+        );
         //verificaion si el usuario existe
         const existe = await UsuarioSchema.findOne(correo).exec();
         if (existe) {
             res.status(400).json({ respuesta: 'El Correo ya existe...' });
         } else {
             //cifrado de la contraseña
-            parametros.passwordUsuario = cifrado.hashSync( parametros.passwordUsuario, 10 );
+            parametros.passwordUsuario = cifrado.hashSync(
+                parametros.passwordUsuario,
+                10
+            );
             //se crea el usuario si no existe
             const objUsuario = new UsuarioSchema(parametros);
             objUsuario
                 .save()
-                .then((miObjeto) => { res.status(200).json({ id: miObjeto._id }); })
-                .catch(() => { res.status(400).json({ respuesta: 'NO se puede crear el Usuario', }); });
+                .then((miObjeto) => {
+                    res.status(200).json({ id: miObjeto._id });
+                })
+                .catch(() => {
+                    res.status(400).json({
+                        respuesta: 'NO se puede crear el Usuario',
+                    });
+                });
         }
     }
     protected static async eliminarUsuario(
@@ -53,8 +64,8 @@ class UsuarioPrivateDao {
         } else {
             res.status(200).json({ respuesta: 'el Usuario no existe' });
         }
-    } 
-     protected static async actualizarUsuario(
+    }
+    protected static async actualizarUsuario(
         identifiacador: any,
         parametro: any,
         res: Response
@@ -63,7 +74,9 @@ class UsuarioPrivateDao {
         // const existe = await PerfilSechema.findById(identifiacador);
         const existe = await UsuarioSchema.findById(identifiacador).exec();
         if (existe) {
-            //se elimina el usuario
+            //se actualiza el usuario
+            console.log(identifiacador)
+            console.log(parametro)
             UsuarioSchema.findByIdAndUpdate(
                 { _id: identifiacador },
                 { $set: parametro }
@@ -78,14 +91,15 @@ class UsuarioPrivateDao {
                 .catch(() => {
                     res.status(400).json({
                         respuesta: 'NO se puede actualizar el Usuario',
+                        
                     });
                 });
         } else {
             res.status(200).json({ respuesta: 'el Usuario no existe' });
         }
-    }  
-     //cantidad de usurios en un perfil
-     protected static async cantidadUsuarioEnPerfil(
+    }
+    //cantidad de usurios en un perfil
+    protected static async cantidadUsuarioEnPerfil(
         identificadorPerfil: any,
         res: Response
     ): Promise<any> {
@@ -118,7 +132,9 @@ class UsuarioPrivateDao {
     ): Promise<any> {
         //se hace la consulta
         const jsonUsuario = { _id: identificador };
-        const datos = await UsuarioSchema.findOne(jsonUsuario).populate({ path: 'codPerfil'}).exec();
+        const datos = await UsuarioSchema.findOne(jsonUsuario)
+            .populate({ path: 'codPerfil' })
+            .exec();
         //entrega la consulta
         if (datos) {
             res.status(200).json(datos);
@@ -127,6 +143,6 @@ class UsuarioPrivateDao {
                 respuesta: 'No hay un perfil con ese identifiicador',
             });
         }
-    }  
+    }
 }
-export default UsuarioPrivateDao
+export default UsuarioPrivateDao;

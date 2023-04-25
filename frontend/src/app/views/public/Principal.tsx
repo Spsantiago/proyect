@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/img/logo.jpg'
 import { Header } from './Header';
 
 
@@ -23,7 +22,7 @@ export const Principal = () => {
                                 data-aos="fade-up"
                                 data-aos-delay="200"
                             >
-                                <Link to="#about" className="btn-get-started">
+                                <Link to="/productos" className="btn-get-started">
                                    Productos
                                 </Link>
                               
@@ -70,7 +69,7 @@ export const Principal = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md footer-contact text-center text-md-start">
+                            <div className="col-lg-4 col-md footer-contact text-center text-md-start">
                                 <h4>Contact Us</h4>
                                 <p>
                                     A108 Adam Street <br />

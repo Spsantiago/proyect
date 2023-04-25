@@ -43,7 +43,7 @@ export const MenuSuperior = () => {
                         className="logo d-flex align-items-center"
                     >
                         <img src={logo} alt="Roger Bernal"  />
-                        <span className="d-none d-md-block">RogerShop</span>
+                        <span className="d-none d-sm-block">RogerShop</span>
                     </Link>
                     <i className="bi bi-list toggle-sidebar-btn" onClick={OcultarMenu}></i>
                 </div>
@@ -74,8 +74,8 @@ export const MenuSuperior = () => {
                                 to="/dashboard"
                                 data-bs-toggle=""
                             >
-                                <i className="bi bi-bell"></i>
-                                <span className="badge bg-primary badge-number">
+                                <i className="bi bi-bell d-none d-sm-block"></i>
+                                <span className="badge bg-primary badge-number d-none d-sm-block">
                                     4
                                 </span>
                             </Link>

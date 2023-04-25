@@ -53,6 +53,7 @@ export const UsuarioListado = () => {
                                         <th>Creación</th>
                                         <th>Perfil</th>
                                         <th>Estado</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,7 +76,6 @@ export const UsuarioListado = () => {
                                             <td>{usuario.estadoUsuario===1?'Activo':'Inactivo'}</td>
                                             <td>
                                               <button onClick={()=>navigate('/dashboard/detailsusers/' + usuario._id)} className='btn'><i  className="fa-solid fa-magnifying-glass" style={{color: "#050be4"}}></i></button>
-                                              
                                              </td>
                                         </tr>
                                     ))}
