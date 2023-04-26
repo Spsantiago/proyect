@@ -41,7 +41,7 @@ class Servidor {
         //parte Privada
         this.app.use('/api/private/perfil',seguridad.analizarToken,apiPerfilRuta);
         this.app.use('/api/private/usuario',seguridad.analizarToken,usuarioPrivateRoute)
-
+        this.app.use('/api/private/')
     }
 
     public iniciarServidor() {

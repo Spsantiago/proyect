@@ -6,11 +6,19 @@ const opcionesAdmin=[
         {nombre:'Nuevo',icono:'bi bi-circle', ruta:'/dashboard/addprofile'},
         {nombre:'Administración', icono:'bi bi-circle',ruta:'/dashboard/adminprofile'},
     ]},
-        {nombre:'Usuarios',icono:'bi bi-person-lines-fill',ruta:'',hijos:[
+    {nombre:'Usuarios',icono:'bi bi-person-lines-fill',ruta:'',hijos:[
             {nombre:'Listado', icono:'bi bi-circle',ruta:'/dashboard/listusers'},
             {nombre: 'Nuevo',icono:'bi bi-circle', ruta:'/dashboard/addusers'},
             {nombre:'Administración',icono:'bi bi-circle',ruta:'/dashboard/adminusers'}
-        ]}
+    ]},
+    {nombre:'Productos',icono:'fa-brands fa-sellcast',ruta:'',hijos:[
+        {nombre:'Listado', icono:'bi bi-circle',ruta:'/dashboard/listproducts'},
+        {nombre: 'Nuevo',icono:'bi bi-circle', ruta:'/dashboard/addproducts'},
+        {nombre:'Administración',icono:'bi bi-circle',ruta:'/dashboard/adminproducts'}
+    ]
+
+    }
+    
 ]
 
 const opcionesInvitado=[
@@ -22,4 +30,5 @@ const opcionesInvitado=[
 
     ]}
 ]
+
 export {opcionesAdmin,opcionesInvitado}

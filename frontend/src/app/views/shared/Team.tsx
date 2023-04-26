@@ -5,8 +5,8 @@ import team3 from '../../../assets/img/team/team-3.jpg';
 export const Team = () => {
     const navigate = useNavigate();
     return (
-        <div className="p-5 colorB">
-            <section id="team" className="team ">
+        <div >
+            <section id="team" className="team colorB">
                 <div
                     className="container aos-init aos-animate"
                     data-aos="fade-up"
@@ -44,7 +44,7 @@ export const Team = () => {
                                 </div>
                                 <div className="member-info">
                                     <div className="social">
-                                        <a href="#">
+                                        <a href="/#">
                                             <i className="bi bi-facebook"></i>
                                         </a>
                                         <a href="https://www.instagram.com/roger.sh0p/" target='_blanck'>

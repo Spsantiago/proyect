@@ -14,7 +14,7 @@ import { UsuarioDetalle } from '../../views/private/users/UsuarioDetalle';
 import { UsuarioCrear } from '../../views/private/users/UsuarioCrear';
 import { UsuarioAdmin } from '../../views/private/users/UsuarioAdmin';
 import { UsuarioActual } from '../../views/private/users/UsuarioActual';
-
+import { ProductosListado } from '../../views/shared/products/ProductosListado';
 const cargando = (
     <div className="d-flex justify-content-center">
         <div className="mt-3">
@@ -47,6 +47,7 @@ const LazyUsuarioActual = lazy(() => import('../../views/private/users/UsuarioAc
 const LazyUsuarioAdmin = lazy(() => import('../../views/private/users/UsuarioAdmin').then(() => ({ default: UsuarioAdmin })) );
 const LazyUsuarioCrear = lazy(() => import('../../views/private/users/UsuarioCrear').then(() => ({ default: UsuarioCrear })) );
 const LazyUsuarioDetalle = lazy(() => import('../../views/private/users/UsuarioDetalle').then(() => ({ default: UsuarioDetalle })) );
+const LazyProductosListado = lazy(() => import('../../views/shared/products/ProductosListado').then(() => ({ default: ProductosListado  })) );
 
 
 export const RuteoTablero = () => {
@@ -63,6 +64,7 @@ export const RuteoTablero = () => {
                 <Route path="/updateusers/:codigo" element={<LazyUsuarioActual />} />
                 <Route path="/detailsusers/:codigo" element={<LazyUsuarioDetalle />} />
                 <Route path="/listusers" element={<LazyUsuarioListado />} />
+                <Route path="/listproducts" element={<LazyProductosListado />} />
 
                 <Route path="/" element={<LazyBienvenida />} />
                 <Route path="/team" element={<LazyTeam />} />

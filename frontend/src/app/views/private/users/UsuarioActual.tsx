@@ -37,11 +37,11 @@ export const UsuarioActual = () => {
         );
     
         if (usuarioRecibido) {
-           
             objeto.nombreUsuario = usuarioRecibido.nombreUsuario;
             objeto.estadoUsuario = usuarioRecibido.estadoUsuario;
             objeto.correoUsuario= usuarioRecibido.correoUsuario
-objeto._id= usuarioRecibido._id
+            objeto.passwordUsuario=usuarioRecibido.passwordUsuario
+            objeto._id= usuarioRecibido._id
             objeto.avatarUsuario= usuarioRecibido.avatarUsuario
             objeto.codPerfil = usuarioRecibido.codPerfil
 
@@ -85,13 +85,11 @@ objeto._id= usuarioRecibido._id
             fh.preventDefault(); /*no deja que se comporte por defecto */
             fh.stopPropagation(); /*detiene todas las acciones del formulario */
         } else {
-
-
           objeto.avatarUsuario= avatarUsuario
           objeto.avatarUsuario=avatarBase64
             const urlActualizar =
                 ApiBack.USUARIOS_ACTUALIZAR + '/' + codigo;
-                const objetoActualizar = new Usuario( objeto._id ,objeto.nombreUsuario,objeto.correoUsuario,'',new Date(),objeto.estadoUsuario,nombreImagenUsuario!==''?nombreImagenUsuario : nombreImagenTempo ,objeto.avatarUsuario,objeto.codPerfil)
+                const objetoActualizar = new Usuario( objeto._id ,objeto.nombreUsuario,objeto.correoUsuario,objeto.passwordUsuario,new Date(),objeto.estadoUsuario,nombreImagenUsuario!==''?nombreImagenUsuario : nombreImagenTempo ,objeto.avatarUsuario,objeto.codPerfil)
             const resultado = await ServicioPrivado.peticionPUT(
                 urlActualizar,
                 objetoActualizar
@@ -267,7 +265,7 @@ objeto._id= usuarioRecibido._id
                                     <Col sm={10}>
                                         <Form.Control
                                             accept="image/png, image/jpeg"
-                                            required
+                                       
                                             type="file"
                                             name="nombreImagenUsuario"
                                             className="form-control"
@@ -295,7 +293,7 @@ objeto._id= usuarioRecibido._id
                                             type="submit"
                                             className="btn btn-primary"
                                         >
-                                            Crear Usuario
+                                            Actualizar Usuario
                                         </Button>
                                     </Col>
                                 </Form.Group>

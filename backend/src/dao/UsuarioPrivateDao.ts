@@ -75,8 +75,6 @@ class UsuarioPrivateDao {
         const existe = await UsuarioSchema.findById(identifiacador).exec();
         if (existe) {
             //se actualiza el usuario
-            console.log(identifiacador)
-            console.log(parametro)
             UsuarioSchema.findByIdAndUpdate(
                 { _id: identifiacador },
                 { $set: parametro }
