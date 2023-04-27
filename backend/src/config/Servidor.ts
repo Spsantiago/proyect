@@ -9,6 +9,8 @@ import apiPerfilRuta from '../route/PerfilRoute';
 import apiUsuarioRuta from '../route/UsuarioRoute';
 import seguridad from '../middleware/Seguidad';
 import usuarioPrivateRoute from '../route/UsuarioPrivateRoute';
+import productoPrivateRouter from '../route/ProductoPrivateRoute';
+import productoRouter from '../route/ProductoRoute';
 
 class Servidor {
     public app: express.Application;
@@ -37,11 +39,12 @@ class Servidor {
     public iniciarRutas() {
         //parte publica
         this.app.use('/api/public/usuario', apiUsuarioRuta);
+        this.app.use('/api/public/producto',productoRouter)
 
         //parte Privada
         this.app.use('/api/private/perfil',seguridad.analizarToken,apiPerfilRuta);
         this.app.use('/api/private/usuario',seguridad.analizarToken,usuarioPrivateRoute)
-        this.app.use('/api/private/')
+        this.app.use('/api/private/producto',seguridad.analizarToken,productoPrivateRouter)
     }
 
     public iniciarServidor() {

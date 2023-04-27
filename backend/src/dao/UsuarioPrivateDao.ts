@@ -89,7 +89,6 @@ class UsuarioPrivateDao {
                 .catch(() => {
                     res.status(400).json({
                         respuesta: 'NO se puede actualizar el Usuario',
-                        
                     });
                 });
         } else {

@@ -6,9 +6,9 @@ class ProductoEntidad{
     public avatarProducto :string
     public estadoProducto: number;
     public fechaCreacion: Date;
-    public codigoProducto:string
+    public codigoProducto:number
 
-constructor(nom:string,val:number,des:string,image: string,nomp:string,fec:Date,est:number,codp:string){
+constructor(nom:string,val:number,des:string,image: string,nomp:string,fec:Date,est:number,codp:number){
  this.nombreProducto=nom 
  this.valor=val
  this.descripcion=des

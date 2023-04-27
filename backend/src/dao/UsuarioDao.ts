@@ -89,7 +89,7 @@ class UsuarioDao {
                     const Token = jwt.sign(misDatos, llave, {
                         expiresIn: 500000,
                     });
-                    res.status(400).json({
+                    res.status(200).json({
                         token: Token, avatar:miObjeto.avatarUsuario
                     });
                 })
