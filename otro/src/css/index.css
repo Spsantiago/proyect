@@ -1,0 +1,72 @@
+html {
+  background-color: rgba(0, 0, 0, 0.1254901961);
+  font: 100% Courier New;
+  margin: 12rem;
+  margin-right: rem;
+  margin-top: -1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.title {
+  justify-content: center;
+  display: flex;
+  font-size: 2rem;
+  margin: 0;
+}
+
+p {
+  justify-content: center;
+  display: flex;
+  width: 25rem;
+  font-size: 12px;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-style: bold;
+  margin: 10px;
+  margin-left: 0;
+}
+
+.card {
+  margin-right: 1rem;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1 0 1%;
+}
+
+a {
+  text-decoration: none;
+  color: darkslategrey;
+}
+a:hover {
+  text-decoration: underline;
+  color: crimson;
+}
+
+.uldescription {
+  margin: 2px;
+  font-size: 0.9rem;
+}
+
+.imagenBonita {
+  width: 15rem;
+}
+
+li {
+  font-size: 0.7rem;
+}
+
+/*# sourceMappingURL=index.css.map */
