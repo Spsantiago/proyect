@@ -14,6 +14,12 @@ const ApiBack = {
     USUARIOS_OBTENER:'/api/private/usuario/todos',
     USUARIOS_ELIMINAR:'/api/private/usuario/eliminar',
     USUARIOS_OBTENER_UNO:'/api/private/usuario/uno',
-    USUARIOS_ACTUALIZAR:'/api/private/usuario/actualizar'
+    USUARIOS_ACTUALIZAR:'/api/private/usuario/actualizar',
+
+    PRODUCTOS_OBTENER:'/api/public/producto/consultar',   
+    PRODUCTOS_CREAR:'/api/private/producto/crear',
+    PRODUCTOS_ELIMINAR:'api/private/producto/eliminar',
+    PRODUCTOS_OBTENER_UNO:'/api/private/usuario/uno',
+    PRODUCTOS_ACTUALIZAR:'/api/private/producto/actualizar',
 };
 export default ApiBack;

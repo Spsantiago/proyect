@@ -8,7 +8,7 @@ import { Vigilante } from '../../security/Vigitante';
 import UsuarioSesion from '../../security/UsuarioSesion';
 import { TableroPrincipal } from '../../container/TableroPrincipal';
 import { Team } from '../../views/shared/Team';
-import { Productos } from '../../views/public/Productos';
+import { ProductosListado } from '../../views/shared/products/ProductosListado';
 
 /*componentes lazy deben iniciar con mayuscula  */
 const LazyPrincipal = lazy(() =>
@@ -37,8 +37,8 @@ const LazyTeam = lazy(() =>
     }))
 );
 const LazyProducts = lazy(() =>
-import('../../views/public/Productos').then(() => ({
-    default: Productos,
+import('../../views/shared/products/ProductosListado').then(() => ({
+    default: ProductosListado,
 }))
 );
 
